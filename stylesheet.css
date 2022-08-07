@@ -1,0 +1,154 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-color: black;
+}
+
+.front-page {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+canvas {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+/* Nav */
+
+.nav-section {
+  position: fixed;
+  width: 100vw;
+  height: 4rem;
+  background-color: black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.6rem, 10%;
+  z-index: 10000;
+  background-color: transparent;
+}
+
+li {
+  list-style-type: none;
+  font-family: Helvetica, Sans-Serif;
+  font-weight: 600;
+  color: white;
+}
+
+.snelle-vape-img {
+  position: relative;
+  height: 3.5rem;
+}
+.snelle-vape-img:hover {
+  cursor: pointer;
+}
+
+.contact {
+  width: 8rem;
+  color: white;
+  border: 2px solid rgb(13, 161, 188);
+  padding: 0.1rem 0.3rem;
+  border-radius: 0.3rem;
+  box-shadow: 0px 0px 10px rgb(13, 161, 188);
+}
+.contact:hover {
+  cursor: pointer;
+  background-color: rgb(13, 161, 188);
+}
+
+.navbar-items {
+  margin-right: 2rem;
+  width: 15rem;
+  /* border: 1px solid red; */
+  display: flex;
+  justify-content: space-around;
+}
+
+.shopping-cart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 0.5rem;
+  box-shadow: 0px 0px 10px rgb(13, 161, 188);
+  border: 2px solid rgb(13, 161, 188);
+  border-radius: 0.3rem;
+  padding: 0.1rem 0.3rem;
+}
+
+.shopping-cart:hover {
+  cursor: pointer;
+  background: rgb(77, 178, 89);
+}
+
+.fa-cart-shopping {
+  color: white;
+  font-size: 2rem;
+}
+
+.cart-count {
+  color: white;
+}
+
+/* Nav End */
+
+/* Header */
+
+.header-text {
+  min-width: 60vw;
+  top: 30%;
+  left: 20vw;
+  /* background: red; */
+  height: 10rem;
+  position: absolute;
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.header-title {
+  color: white;
+  z-index: 4;
+  font-family: Helvetica, Sans-Serif;
+  font-weight: 600;
+  font-size: calc(5vw + 0.5rem);
+}
+
+.header-title2 {
+  color: white;
+  z-index: 4;
+  font-family: Helvetica, Sans-Serif;
+  font-weight: 600;
+  font-size: calc(3vw + 0.5rem);
+}
+
+.cta {
+  color: white;
+  position: relative;
+  top: -30vh;
+  left: 40vw;
+  z-index: 5;
+  background-color: black;
+  padding: 1rem;
+  /* background-color: white; */
+  box-shadow: 0px 0px 15px rgb(13, 161, 188);
+  border: 3px solid rgb(13, 161, 188);
+  border-radius: 0.5rem;
+}
+.cta:hover {
+  background: rgb(13, 161, 188);
+  cursor: pointer;
+}
+
+.cta-img {
+  height: 2rem;
+}
