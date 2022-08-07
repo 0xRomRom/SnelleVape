@@ -43,8 +43,8 @@ li {
 }
 
 .snelle-vape-img {
-  position: relative;
   height: 3.5rem;
+  margin-left: 5rem;
 }
 .snelle-vape-img:hover {
   cursor: pointer;
@@ -64,7 +64,7 @@ li {
 }
 
 .navbar-items {
-  margin-right: 2rem;
+  margin-right: 3rem;
   width: 15rem;
   /* border: 1px solid red; */
   display: flex;
@@ -85,7 +85,7 @@ li {
 
 .shopping-cart:hover {
   cursor: pointer;
-  background: rgb(77, 178, 89);
+  background: rgb(13, 161, 188);
 }
 
 .fa-cart-shopping {
