@@ -2,6 +2,11 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  scroll-behavior: smooth;
+}
+
+.hidden {
+  display: none;
 }
 
 body {
@@ -97,6 +102,26 @@ li {
   color: white;
 }
 
+.hamburger {
+  display: none;
+  left: -5rem;
+  cursor: pointer;
+  z-index: 4;
+  position: relative;
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+}
+
+.bar {
+  display: block;
+  width: 25px;
+  height: 3px;
+  margin: 5px auto;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  background-color: white;
+}
+
 /* Nav End */
 
 /* Header */
@@ -105,7 +130,6 @@ li {
   min-width: 60vw;
   top: 30%;
   left: 20vw;
-  /* background: red; */
   height: 10rem;
   position: absolute;
   z-index: 3;
@@ -113,6 +137,7 @@ li {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  /* background-color: red; */
 }
 
 .header-title {
@@ -133,13 +158,9 @@ li {
 
 .cta {
   color: white;
-  position: relative;
-  top: -30vh;
-  left: 40vw;
   z-index: 5;
   background-color: black;
   padding: 1rem;
-  /* background-color: white; */
   box-shadow: 0px 0px 15px rgb(13, 161, 188);
   border: 3px solid rgb(13, 161, 188);
   border-radius: 0.5rem;
@@ -151,4 +172,95 @@ li {
 
 .cta-img {
   height: 2rem;
+}
+
+.cta-container {
+  width: 100vw;
+  top: 65%;
+  height: 10rem;
+  position: absolute;
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+/* Media Queries */
+
+@media only screen and (max-width: 700px) {
+  .contact {
+    display: none;
+  }
+  .hamburger {
+    position: relative;
+    display: initial;
+    left: -2rem;
+  }
+  .snelle-vape-img {
+    margin-left: 0.3rem;
+    height: 2.5rem;
+  }
+  .header-text {
+    left: 5vw;
+    width: 90vw;
+  }
+  .header-title {
+    font-size: 12vw;
+  }
+  .header-title2 {
+    font-size: 5vw;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .contact {
+    display: none;
+  }
+  .hamburger {
+    position: relative;
+    display: initial;
+    left: -1.2rem;
+  }
+  .snelle-vape-img {
+    height: 2.5rem;
+  }
+  .shopping-cart {
+    position: relative;
+    left: 2.5rem;
+  }
+  .fa-cart-shopping {
+    font-size: 1.3rem;
+  }
+  .cart-count {
+    font-size: 1.7rem;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .shopping-cart {
+    position: relative;
+    left: 2rem;
+  }
+  .hamburger {
+    position: relative;
+    display: initial;
+    left: calc(-1.5rem + 3vw);
+  }
+  .cta {
+    padding: 0.3rem;
+  }
+  .cta-img {
+    height: 1.5rem;
+  }
+}
+
+@media only screen and (max-width: 360px) {
+  .snelle-vape-img {
+    height: 2rem;
+  }
+  .shopping-cart {
+    position: relative;
+    left: 0rem;
+  }
 }
