@@ -102,24 +102,57 @@ li {
   color: white;
 }
 
-.hamburger {
-  display: none;
-  left: -5rem;
-  cursor: pointer;
-  z-index: 4;
+.menu {
   position: relative;
-  -webkit-tap-highlight-color: transparent;
-  outline: none;
+  height: 100%;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  padding: 0;
 }
 
-.bar {
-  display: block;
-  width: 25px;
-  height: 3px;
-  margin: 5px auto;
-  -webkit-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
-  background-color: white;
+.burger-svg {
+  height: 100%;
+}
+.burger-button {
+  display: none;
+  position: relative;
+  height: 100%;
+}
+.line {
+  fill: none;
+  stroke: white;
+  stroke-width: 6;
+  transition: stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1),
+    stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.line1 {
+  stroke-dasharray: 60 207;
+  stroke-width: 6;
+}
+.line2 {
+  stroke-dasharray: 60 60;
+  stroke-width: 6;
+}
+.line3 {
+  stroke-dasharray: 60 207;
+  stroke-width: 6;
+}
+.opened .line1 {
+  stroke-dasharray: 90 207;
+  stroke-dashoffset: -134;
+  stroke-width: 6;
+}
+.opened .line2 {
+  stroke-dasharray: 1 60;
+  stroke-dashoffset: -30;
+  stroke-width: 6;
+}
+.opened .line3 {
+  stroke-dasharray: 90 207;
+  stroke-dashoffset: -134;
+  stroke-width: 6;
 }
 
 /* Nav End */
@@ -192,10 +225,8 @@ li {
   .contact {
     display: none;
   }
-  .hamburger {
-    position: relative;
+  .burger-button {
     display: initial;
-    left: -2rem;
   }
   .snelle-vape-img {
     margin-left: 0.3rem;
@@ -217,11 +248,6 @@ li {
   .contact {
     display: none;
   }
-  .hamburger {
-    position: relative;
-    display: initial;
-    left: -1.2rem;
-  }
   .snelle-vape-img {
     height: 2.5rem;
   }
@@ -235,17 +261,16 @@ li {
   .cart-count {
     font-size: 1.7rem;
   }
+  .burger-button {
+    left: -0.5rem;
+    height: 80%;
+  }
 }
 
 @media only screen and (max-width: 400px) {
   .shopping-cart {
     position: relative;
-    left: 2rem;
-  }
-  .hamburger {
-    position: relative;
-    display: initial;
-    left: calc(-1.5rem + 3vw);
+    left: 1.5rem;
   }
   .cta {
     padding: 0.3rem;
@@ -253,14 +278,20 @@ li {
   .cta-img {
     height: 1.5rem;
   }
+  .burger-button {
+    left: -2rem;
+  }
 }
 
-@media only screen and (max-width: 360px) {
+@media only screen and (max-width: 375px) {
   .snelle-vape-img {
     height: 2rem;
   }
   .shopping-cart {
     position: relative;
-    left: 0rem;
+    left: 1rem;
+  }
+  .burger-button {
+    left: -1rem;
   }
 }
