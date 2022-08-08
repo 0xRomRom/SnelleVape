@@ -244,6 +244,12 @@ li {
   height: 2rem;
 }
 
+.formbox-ref {
+  position: relative;
+  height: 4.3rem;
+  display: inline-block;
+}
+
 .cta-container {
   width: 96vw;
   top: 65%;
@@ -261,6 +267,13 @@ li {
 /* Header End */
 
 /* Menu Start */
+
+.copyright {
+  position: absolute;
+  top: 123rem;
+  height: 2rem;
+  left: 45vw;
+}
 
 .main-menu {
   position: relative;
@@ -294,14 +307,20 @@ li {
   color: white;
   font-family: Helvetica, Sans-Serif;
   font-weight: 600;
-  font-size: 2rem;
+  font-size: 1.9vw;
 }
 
 .form-subtext {
   color: white;
   font-family: Helvetica, Sans-Serif;
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 0.9vw;
+}
+
+.flex-options {
+  display: flex;
+  justify-content: center;
+  gap: 0.8rem;
 }
 
 .form-box {
@@ -318,7 +337,116 @@ li {
   align-items: center;
   flex-direction: column;
   gap: 0.8rem;
+  overflow-y: scroll;
 }
+
+.flavor-positioning {
+  position: relative;
+  height: 7rem;
+  background: rgb(167, 128, 160);
+  min-width: 95%;
+  border-radius: 0.3rem;
+  gap: 1rem;
+  display: flex;
+}
+
+.flavor1 {
+  position: relative;
+  margin-top: 40rem;
+}
+
+.flavor10 {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.form-img {
+  position: relative;
+  height: 95%;
+  top: 3%;
+  left: 0.2rem;
+  border-radius: 0.3rem;
+}
+
+.form-title {
+  display: flex;
+  align-items: center;
+  font-family: Helvetica, Sans-Serif;
+  font-weight: 600;
+  min-width: 20vw;
+}
+
+.inc-button {
+  position: relative;
+  height: 50%;
+  top: 25%;
+  width: 4rem;
+  font-size: 2rem;
+  font-family: Helvetica, Sans-Serif;
+  font-weight: 600;
+  background: rgb(167, 128, 160);
+  border-radius: 0.3rem;
+  cursor: pointer;
+  box-shadow: 0px 0px 2px black;
+}
+
+.inc-button:hover {
+  background: black;
+  color: white;
+}
+
+.dec-button {
+  position: relative;
+  height: 50%;
+  top: 25%;
+  width: 4rem;
+  font-size: 2rem;
+  font-family: Helvetica, Sans-Serif;
+  font-weight: 600;
+  background: rgb(167, 128, 160);
+  border-radius: 0.3rem;
+  cursor: pointer;
+  box-shadow: 0px 0px 2px black;
+}
+
+.dec-button:hover {
+  background: black;
+  color: white;
+}
+
+.amount-class {
+  position: relative;
+  height: 50%;
+  width: 4rem;
+  top: 25%;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgb(0, 0, 0);
+  font-size: 2rem;
+  border-radius: 0.3rem;
+}
+
+.fa-cart-plus {
+  top: 25%;
+  left: 2rem;
+  color: white;
+  font-size: 3rem;
+  position: relative;
+  width: 5rem;
+  height: 3.5rem;
+
+  border-radius: 0.3rem;
+  padding: 0.2rem 0.5rem;
+  box-shadow: 0px 0px 5px black;
+}
+
+.fa-cart-plus:hover {
+  cursor: pointer;
+  background-color: black;
+}
+
 /* Media Queries */
 
 @media only screen and (max-width: 1000px) {
