@@ -9,13 +9,21 @@
   display: none;
 }
 
+/* html {
+  overflow-x: hidden;
+} */
+
 body {
   background-color: black;
 }
 
 .front-page {
+  position: relative;
   width: 100vw;
-  height: 100vh;
+  height: 63rem;
+}
+
+header {
   overflow: hidden;
 }
 
@@ -30,12 +38,12 @@ canvas {
 .nav-section {
   position: fixed;
   width: 100vw;
-  height: 4rem;
+  height: 3rem;
   background-color: black;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.6rem, 10%;
+  padding: 1.6rem;
   z-index: 10000;
   background-color: transparent;
 }
@@ -69,10 +77,10 @@ li {
 }
 
 .navbar-items {
-  margin-right: 3rem;
   width: 15rem;
-  /* border: 1px solid red; */
+  margin-right: 3rem;
   display: flex;
+  gap: 2rem;
   justify-content: space-around;
 }
 
@@ -103,9 +111,10 @@ li {
 }
 
 .menu-options {
-  position: absolute;
+  position: fixed;
   width: 100vw;
-  height: 100vh;
+  height: 105vh;
+  top: -1rem;
   z-index: 5;
   animation: opacityIn 0.2s ease-in forwards;
   display: none;
@@ -131,23 +140,23 @@ li {
 /* Burger Menu */
 
 .menu {
+  display: none;
   position: relative;
-  height: 100%;
+  height: 3rem;
+  width: 3rem;
   background-color: transparent;
   border: none;
   cursor: pointer;
-  display: flex;
-  padding: 0;
 }
 
 .burger-svg {
-  height: 100%;
-}
-.burger-button {
   display: none;
+
   position: relative;
-  height: 100%;
+  width: inherit;
+  height: inherit;
 }
+
 .line {
   fill: none;
   stroke: white;
@@ -236,8 +245,9 @@ li {
 }
 
 .cta-container {
-  width: 100vw;
+  width: 96vw;
   top: 65%;
+  left: 1%;
   height: 10rem;
   position: absolute;
   z-index: 3;
@@ -245,15 +255,41 @@ li {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  overflow: hidden;
+}
+
+/* Header End */
+
+/* Menu Start */
+
+.main-menu {
+  position: relative;
+  height: 63rem;
+  background: linear-gradient(
+    180deg,
+    rgb(0, 0, 0),
+    rgb(0, 0, 0),
+    rgb(145, 11, 127)
+  );
+  /* border-top: 1px solid white; */
 }
 
 /* Media Queries */
+
+@media only screen and (max-width: 1000px) {
+  .navbar-items {
+    margin: 0;
+  }
+}
 
 @media only screen and (max-width: 700px) {
   .contact {
     display: none;
   }
-  .burger-button {
+  .burger-svg {
+    display: initial;
+  }
+  .menu {
     display: initial;
   }
   .snelle-vape-img {
@@ -281,7 +317,6 @@ li {
   }
   .shopping-cart {
     position: relative;
-    left: 2.5rem;
   }
   .fa-cart-shopping {
     font-size: 1.3rem;
@@ -296,9 +331,12 @@ li {
 }
 
 @media only screen and (max-width: 400px) {
+  .snelle-vape-img {
+    height: 2rem;
+  }
   .shopping-cart {
     position: relative;
-    left: 1.5rem;
+    /* left: 1.5rem; */
   }
   .cta {
     padding: 0.3rem;
@@ -308,18 +346,5 @@ li {
   }
   .burger-button {
     left: -2rem;
-  }
-}
-
-@media only screen and (max-width: 375px) {
-  .snelle-vape-img {
-    height: 2rem;
-  }
-  .shopping-cart {
-    position: relative;
-    left: 1rem;
-  }
-  .burger-button {
-    left: -1rem;
   }
 }
