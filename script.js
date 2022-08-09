@@ -8,6 +8,7 @@ const cartAmount = document.querySelector(".cart-count");
 const hideCart = document.querySelector(".hide-cart");
 const checkoutCart = document.querySelector(".checkout-cart");
 const orderedItems = document.querySelector(".ordered-items");
+const totalPrice = document.querySelector(".total-order-price");
 const decreaseQuantity1 = document.querySelector(".min1");
 const decreaseQuantity2 = document.querySelector(".min2");
 const decreaseQuantity3 = document.querySelector(".min3");
@@ -107,6 +108,7 @@ checkoutCart.style.display = "none";
 
 let cartContent = {
   totalCount: 0,
+  totalPrice: 0,
   flavorAmounts: {
     strawberryBanana: 0,
     mixedBerry: 0,
@@ -123,6 +125,7 @@ let cartContent = {
 let finalOrder = cartContent.flavorAmounts;
 
 const cartRendering = () => {
+  totalPrice.textContent = (cartContent.totalCount * 9.95).toFixed(2);
   for (let [key, value] of Object.entries(finalOrder)) {
     if (+value > 0) {
       if (key === "strawberryBanana") {
@@ -134,6 +137,46 @@ const cartRendering = () => {
         choice2Title.textContent = "Mixed Berry";
         choice2Amount.textContent = ` x ${value}`;
         choice2.classList.remove("hidden");
+      }
+      if (key === "redRazPassionFruit") {
+        choice3Title.textContent = "Red Raz Passion Fruit";
+        choice3Amount.textContent = ` x ${value}`;
+        choice3.classList.remove("hidden");
+      }
+      if (key === "gummyBear") {
+        choice4Title.textContent = "Gummy Bear";
+        choice4Amount.textContent = ` x ${value}`;
+        choice4.classList.remove("hidden");
+      }
+      if (key === "pineappleMango") {
+        choice5Title.textContent = "Pineapple Mango";
+        choice5Amount.textContent = ` x ${value}`;
+        choice5.classList.remove("hidden");
+      }
+      if (key === "bubblegumIce") {
+        choice6Title.textContent = "Bubblegum Ice";
+        choice6Amount.textContent = ` x ${value}`;
+        choice6.classList.remove("hidden");
+      }
+      if (key === "strawberryIcecream") {
+        choice7Title.textContent = "Strawberry Icecream";
+        choice7Amount.textContent = ` x ${value}`;
+        choice7.classList.remove("hidden");
+      }
+      if (key === "orangeSoda") {
+        choice8Title.textContent = "Orange Soda";
+        choice8Amount.textContent = ` x ${value}`;
+        choice8.classList.remove("hidden");
+      }
+      if (key === "colaIca") {
+        choice9Title.textContent = "Cola Ice";
+        choice9Amount.textContent = ` x ${value}`;
+        choice9.classList.remove("hidden");
+      }
+      if (key === "honeydewMelon") {
+        choice10Title.textContent = "Honeydew Melon";
+        choice10Amount.textContent = ` x ${value}`;
+        choice10.classList.remove("hidden");
       }
     }
   }

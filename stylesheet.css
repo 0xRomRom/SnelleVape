@@ -563,18 +563,83 @@ li {
 .choice-styling {
   position: relative;
   height: 3rem;
-  width: 100%;
+  width: 98%;
   background: white;
   display: flex;
   gap: 2rem;
-
   padding-left: 1rem;
-  justify-content: space-evenly;
+  padding-right: 1rem;
+  margin-bottom: 0.2rem;
+  justify-content: space-between;
   align-items: center;
   flex-direction: row;
   font-family: Helvetica, Sans-Serif;
   font-weight: 600;
-  font-size: 0.7vw;
+  font-size: 0.7rem;
+  border-radius: 0.3rem;
+}
+
+.cart-text {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.cart-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.minus-styling {
+  cursor: pointer;
+  color: white;
+  background: transparent;
+  border: none;
+  border-radius: 0.2rem;
+}
+.plus-styling {
+  cursor: pointer;
+  color: white;
+  background: transparent;
+  border: none;
+  border-radius: 0.2rem;
+}
+
+.minus-img {
+  height: 2rem;
+}
+
+.plus-img {
+  height: 3rem;
+}
+
+.fa-trash-can {
+  font-size: 2rem;
+}
+
+.trash-styling {
+  padding: 0.1rem;
+  border: none;
+  cursor: pointer;
+}
+
+.total-price {
+  display: flex;
+  flex-direction: row;
+}
+
+.total-order {
+  color: white;
+  font-family: Helvetica, Sans-Serif;
+  font-weight: 600;
+}
+
+.total-order-price {
+  color: white;
+  font-family: Helvetica, Sans-Serif;
+  font-weight: 600;
 }
 
 .to-address {
