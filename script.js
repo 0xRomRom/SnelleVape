@@ -7,6 +7,7 @@ const formAmount = document.querySelector(".amount-value");
 const cartAmount = document.querySelector(".cart-count");
 const hideCart = document.querySelector(".hide-cart");
 const checkoutCart = document.querySelector(".checkout-cart");
+const orderedItems = document.querySelector(".ordered-items");
 const decreaseQuantity1 = document.querySelector(".min1");
 const decreaseQuantity2 = document.querySelector(".min2");
 const decreaseQuantity3 = document.querySelector(".min3");
@@ -48,6 +49,37 @@ const addToCart8 = document.querySelector(".cartAdd8");
 const addToCart9 = document.querySelector(".cartAdd9");
 const addToCart10 = document.querySelector(".cartAdd10");
 
+const choice1 = document.querySelector(".choice1");
+const choice1Title = document.querySelector(".choice1-title");
+const choice1Amount = document.querySelector(".choice1-amount");
+const choice2 = document.querySelector(".choice2");
+const choice2Title = document.querySelector(".choice2-title");
+const choice2Amount = document.querySelector(".choice2-amount");
+const choice3 = document.querySelector(".choice3");
+const choice3Title = document.querySelector(".choice3-title");
+const choice3Amount = document.querySelector(".choice3-amount");
+const choice4 = document.querySelector(".choice4");
+const choice4Title = document.querySelector(".choice4-title");
+const choice4Amount = document.querySelector(".choice4-amount");
+const choice5 = document.querySelector(".choice5");
+const choice5Title = document.querySelector(".choice5-title");
+const choice5Amount = document.querySelector(".choice5-amount");
+const choice6 = document.querySelector(".choice6");
+const choice6Title = document.querySelector(".choice6-title");
+const choice6Amount = document.querySelector(".choice6-amount");
+const choice7 = document.querySelector(".choice7");
+const choice7Title = document.querySelector(".choice7-title");
+const choice7Amount = document.querySelector(".choice7-amount");
+const choice8 = document.querySelector(".choice8");
+const choice8Title = document.querySelector(".choice8-title");
+const choice8Amount = document.querySelector(".choice8-amount");
+const choice9 = document.querySelector(".choice9");
+const choice9Title = document.querySelector(".choice9-title");
+const choice9Amount = document.querySelector(".choice9-amount");
+const choice10 = document.querySelector(".choice10");
+const choice10Title = document.querySelector(".choice10-title");
+const choice10Amount = document.querySelector(".choice10-amount");
+
 //Init
 let cartInit = 0;
 let initValue1 = 0;
@@ -76,17 +108,35 @@ checkoutCart.style.display = "none";
 let cartContent = {
   totalCount: 0,
   flavorAmounts: {
-    choice1: 0,
-    choice2: 0,
-    choice3: 0,
-    choice4: 0,
-    choice5: 0,
-    choice6: 0,
-    choice7: 0,
-    choice8: 0,
-    choice9: 0,
-    choice10: 0,
+    strawberryBanana: 0,
+    mixedBerry: 0,
+    redRazPassionFruit: 0,
+    gummyBear: 0,
+    pineappleMango: 0,
+    bubblegumIce: 0,
+    strawberryIcecream: 0,
+    orangeSoda: 0,
+    colaIca: 0,
+    honeydewMelon: 0,
   },
+};
+let finalOrder = cartContent.flavorAmounts;
+
+const cartRendering = () => {
+  for (let [key, value] of Object.entries(finalOrder)) {
+    if (+value > 0) {
+      if (key === "strawberryBanana") {
+        choice1Title.textContent = "Strawberry Banana";
+        choice1Amount.textContent = ` x ${value}`;
+        choice1.classList.remove("hidden");
+      }
+      if (key === "mixedBerry") {
+        choice2Title.textContent = "Mixed Berry";
+        choice2Amount.textContent = ` x ${value}`;
+        choice2.classList.remove("hidden");
+      }
+    }
+  }
 };
 
 // Burger menu
@@ -98,9 +148,9 @@ burgerMenu.addEventListener("click", () => {
 });
 
 //Show Cart
-
 shoppingCart.addEventListener("click", () => {
   checkoutCart.style.display = "flex";
+  cartRendering();
 });
 
 //Hide cart
@@ -131,7 +181,7 @@ addToCart1.addEventListener("click", () => {
   shoppingCartFlashing(initValue1);
   cartContent.totalCount += initValue1;
   cartAmount.textContent = cartContent.totalCount;
-  cartContent.flavorAmounts.choice1 += initValue1;
+  cartContent.flavorAmounts.strawberryBanana += initValue1;
   initValue1 = 0;
   amount1.textContent = initValue1;
 });
@@ -149,7 +199,7 @@ addToCart2.addEventListener("click", () => {
   shoppingCartFlashing(initValue2);
   cartContent.totalCount += initValue2;
   cartAmount.textContent = cartContent.totalCount;
-  cartContent.flavorAmounts.choice2 += initValue2;
+  cartContent.flavorAmounts.mixedBerry += initValue2;
   initValue2 = 0;
   amount2.textContent = initValue2;
 });
@@ -167,7 +217,7 @@ addToCart3.addEventListener("click", () => {
   shoppingCartFlashing(initValue3);
   cartContent.totalCount += initValue3;
   cartAmount.textContent = cartContent.totalCount;
-  cartContent.flavorAmounts.choice3 += initValue3;
+  cartContent.flavorAmounts.redRazPassionFruit += initValue3;
   initValue3 = 0;
   amount3.textContent = initValue3;
 });
@@ -185,7 +235,7 @@ addToCart4.addEventListener("click", () => {
   shoppingCartFlashing(initValue4);
   cartContent.totalCount += initValue4;
   cartAmount.textContent = cartContent.totalCount;
-  cartContent.flavorAmounts.choice4 += initValue4;
+  cartContent.flavorAmounts.gummyBear += initValue4;
   initValue4 = 0;
   amount4.textContent = initValue4;
 });
@@ -203,7 +253,7 @@ addToCart5.addEventListener("click", () => {
   shoppingCartFlashing(initValue5);
   cartContent.totalCount += initValue5;
   cartAmount.textContent = cartContent.totalCount;
-  cartContent.flavorAmounts.choice5 += initValue5;
+  cartContent.flavorAmounts.pineappleMango += initValue5;
   initValue5 = 0;
   amount5.textContent = initValue5;
 });
@@ -221,7 +271,7 @@ addToCart6.addEventListener("click", () => {
   shoppingCartFlashing(initValue6);
   cartContent.totalCount += initValue6;
   cartAmount.textContent = cartContent.totalCount;
-  cartContent.flavorAmounts.choice6 += initValue6;
+  cartContent.flavorAmounts.bubblegumIce += initValue6;
   initValue6 = 0;
   amount6.textContent = initValue6;
 });
@@ -239,7 +289,7 @@ addToCart7.addEventListener("click", () => {
   shoppingCartFlashing(initValue7);
   cartContent.totalCount += initValue7;
   cartAmount.textContent = cartContent.totalCount;
-  cartContent.flavorAmounts.choice7 += initValue7;
+  cartContent.flavorAmounts.strawberryIcecream += initValue7;
   initValue7 = 0;
   amount7.textContent = initValue7;
 });
@@ -257,7 +307,7 @@ addToCart8.addEventListener("click", () => {
   shoppingCartFlashing(initValue8);
   cartContent.totalCount += initValue8;
   cartAmount.textContent = cartContent.totalCount;
-  cartContent.flavorAmounts.choice8 += initValue8;
+  cartContent.flavorAmounts.orangeSoda += initValue8;
   initValue8 = 0;
   amount8.textContent = initValue8;
 });
@@ -275,7 +325,7 @@ addToCart9.addEventListener("click", () => {
   shoppingCartFlashing(initValue9);
   cartContent.totalCount += initValue9;
   cartAmount.textContent = cartContent.totalCount;
-  cartContent.flavorAmounts.choice9 += initValue9;
+  cartContent.flavorAmounts.colaIca += initValue9;
   initValue9 = 0;
   amount9.textContent = initValue9;
 });
@@ -293,7 +343,7 @@ addToCart10.addEventListener("click", () => {
   shoppingCartFlashing(initValue10);
   cartContent.totalCount += initValue10;
   cartAmount.textContent = cartContent.totalCount;
-  cartContent.flavorAmounts.choice10 += initValue10;
+  cartContent.flavorAmounts.honeydewMelon += initValue10;
   initValue10 = 0;
   amount10.textContent = initValue10;
 });
