@@ -9,6 +9,7 @@ const hideCart = document.querySelector(".hide-cart");
 const checkoutCart = document.querySelector(".checkout-cart");
 const orderedItems = document.querySelector(".ordered-items");
 const totalPrice = document.querySelector(".total-order-price");
+const trashCan1 = document.querySelector(".trash1");
 const decreaseQuantity1 = document.querySelector(".min1");
 const decreaseQuantity2 = document.querySelector(".min2");
 const decreaseQuantity3 = document.querySelector(".min3");
@@ -124,6 +125,20 @@ let cartContent = {
 };
 let finalOrder = cartContent.flavorAmounts;
 let totalOrder = cartContent.totalPrice;
+
+const deleteFromCart = (item, key, value) => {
+  item.classList.add("hidden");
+  cartContent.flavorAmounts[key] = 0;
+  cartContent.totalCount -= value;
+  cartContent.totalPrice -= (value * 9.95).toFixed(2);
+  totalPrice.textContent = cartContent.totalPrice;
+  cartAmount.textContent -= value;
+};
+
+trashCan1.addEventListener("click", () => {
+  let cartValue = cartContent.flavorAmounts.strawberryBanana;
+  deleteFromCart(choice1, "strawberryBanana", cartValue);
+});
 
 const cartRendering = () => {
   totalPrice.textContent = (cartContent.totalCount * 9.95).toFixed(2);
