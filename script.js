@@ -123,9 +123,13 @@ let cartContent = {
   },
 };
 let finalOrder = cartContent.flavorAmounts;
+let totalOrder = cartContent.totalPrice;
 
 const cartRendering = () => {
   totalPrice.textContent = (cartContent.totalCount * 9.95).toFixed(2);
+  cartContent.totalPrice = (cartContent.totalCount * 9.95).toFixed(2);
+  console.log(cartContent.totalPrice);
+  console.log(cartContent.totalCount);
   for (let [key, value] of Object.entries(finalOrder)) {
     if (+value > 0) {
       if (key === "strawberryBanana") {
