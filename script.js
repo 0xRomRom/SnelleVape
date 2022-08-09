@@ -5,6 +5,8 @@ const burgerMenu = document.querySelector(".menu");
 const shoppingCart = document.querySelector(".shopping-cart");
 const formAmount = document.querySelector(".amount-value");
 const cartAmount = document.querySelector(".cart-count");
+const hideCart = document.querySelector(".hide-cart");
+const checkoutCart = document.querySelector(".checkout-cart");
 const decreaseQuantity1 = document.querySelector(".min1");
 const decreaseQuantity2 = document.querySelector(".min2");
 const decreaseQuantity3 = document.querySelector(".min3");
@@ -93,8 +95,18 @@ burgerMenu.addEventListener("click", () => {
     shoppingCart.style.display != "none" ? "none" : "flex";
 });
 
-//Form Logic
+//Show Cart
 
+shoppingCart.addEventListener("click", () => {
+  checkoutCart.style.display = "flex";
+});
+
+//Hide cart
+hideCart.addEventListener("click", () => {
+  checkoutCart.style.display = "none";
+});
+
+//Form Logic
 //===1===
 increaseQuantity1.addEventListener("click", () => {
   initValue1++;
