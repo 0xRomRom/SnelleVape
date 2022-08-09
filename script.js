@@ -10,6 +10,15 @@ const checkoutCart = document.querySelector(".checkout-cart");
 const orderedItems = document.querySelector(".ordered-items");
 const totalPrice = document.querySelector(".total-order-price");
 const trashCan1 = document.querySelector(".trash1");
+const trashCan2 = document.querySelector(".trash2");
+const trashCan3 = document.querySelector(".trash3");
+const trashCan4 = document.querySelector(".trash4");
+const trashCan5 = document.querySelector(".trash5");
+const trashCan6 = document.querySelector(".trash6");
+const trashCan7 = document.querySelector(".trash7");
+const trashCan8 = document.querySelector(".trash8");
+const trashCan9 = document.querySelector(".trash9");
+const trashCan10 = document.querySelector(".trash10");
 const decreaseQuantity1 = document.querySelector(".min1");
 const decreaseQuantity2 = document.querySelector(".min2");
 const decreaseQuantity3 = document.querySelector(".min3");
@@ -131,13 +140,58 @@ const deleteFromCart = (item, key, value) => {
   cartContent.flavorAmounts[key] = 0;
   cartContent.totalCount -= value;
   cartContent.totalPrice -= (value * 9.95).toFixed(2);
-  totalPrice.textContent = cartContent.totalPrice;
+  totalPrice.textContent = cartContent.totalPrice.toFixed(2);
   cartAmount.textContent -= value;
 };
 
 trashCan1.addEventListener("click", () => {
   let cartValue = cartContent.flavorAmounts.strawberryBanana;
   deleteFromCart(choice1, "strawberryBanana", cartValue);
+});
+
+trashCan2.addEventListener("click", () => {
+  let cartValue = cartContent.flavorAmounts.mixedBerry;
+  deleteFromCart(choice2, "mixedBerry", cartValue);
+});
+
+trashCan3.addEventListener("click", () => {
+  let cartValue = cartContent.flavorAmounts.redRazPassionFruit;
+  deleteFromCart(choice3, "redRazPassionFruit", cartValue);
+});
+
+trashCan4.addEventListener("click", () => {
+  let cartValue = cartContent.flavorAmounts.gummyBear;
+  deleteFromCart(choice4, "gummyBear", cartValue);
+});
+
+trashCan5.addEventListener("click", () => {
+  let cartValue = cartContent.flavorAmounts.pineappleMango;
+  deleteFromCart(choice5, "pineappleMango", cartValue);
+});
+
+trashCan6.addEventListener("click", () => {
+  let cartValue = cartContent.flavorAmounts.bubblegumIce;
+  deleteFromCart(choice6, "bubblegumIce", cartValue);
+});
+
+trashCan7.addEventListener("click", () => {
+  let cartValue = cartContent.flavorAmounts.strawberryIcecream;
+  deleteFromCart(choice7, "strawberryIcecream", cartValue);
+});
+
+trashCan8.addEventListener("click", () => {
+  let cartValue = cartContent.flavorAmounts.orangeSoda;
+  deleteFromCart(choice8, "orangeSoda", cartValue);
+});
+
+trashCan9.addEventListener("click", () => {
+  let cartValue = cartContent.flavorAmounts.colaIca;
+  deleteFromCart(choice9, "colaIce", cartValue);
+});
+
+trashCan10.addEventListener("click", () => {
+  let cartValue = cartContent.flavorAmounts.honeydewMelon;
+  deleteFromCart(choice10, "honeydewMelon", cartValue);
 });
 
 const cartRendering = () => {
