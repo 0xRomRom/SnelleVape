@@ -71,6 +71,8 @@ amount8.textContent = initValue8;
 amount9.textContent = initValue9;
 amount10.textContent = initValue10;
 cartAmount.textContent = cartInit;
+checkoutCart.style.display = "none";
+
 let cartContent = {
   totalCount: 0,
   flavorAmounts: {
@@ -106,6 +108,14 @@ hideCart.addEventListener("click", () => {
   checkoutCart.style.display = "none";
 });
 
+const shoppingCartFlashing = (itemCount) => {
+  if (itemCount === 0) return;
+  shoppingCart.classList.add("flashing");
+  setTimeout(() => {
+    shoppingCart.classList.remove("flashing");
+  }, 1000);
+};
+
 //Form Logic
 //===1===
 increaseQuantity1.addEventListener("click", () => {
@@ -118,6 +128,7 @@ decreaseQuantity1.addEventListener("click", () => {
   amount1.textContent = initValue1;
 });
 addToCart1.addEventListener("click", () => {
+  shoppingCartFlashing(initValue1);
   cartContent.totalCount += initValue1;
   cartAmount.textContent = cartContent.totalCount;
   cartContent.flavorAmounts.choice1 += initValue1;
@@ -135,6 +146,7 @@ decreaseQuantity2.addEventListener("click", () => {
   amount2.textContent = initValue2;
 });
 addToCart2.addEventListener("click", () => {
+  shoppingCartFlashing(initValue2);
   cartContent.totalCount += initValue2;
   cartAmount.textContent = cartContent.totalCount;
   cartContent.flavorAmounts.choice2 += initValue2;
@@ -152,6 +164,7 @@ decreaseQuantity3.addEventListener("click", () => {
   amount3.textContent = initValue3;
 });
 addToCart3.addEventListener("click", () => {
+  shoppingCartFlashing(initValue3);
   cartContent.totalCount += initValue3;
   cartAmount.textContent = cartContent.totalCount;
   cartContent.flavorAmounts.choice3 += initValue3;
@@ -169,6 +182,7 @@ decreaseQuantity4.addEventListener("click", () => {
   amount4.textContent = initValue4;
 });
 addToCart4.addEventListener("click", () => {
+  shoppingCartFlashing(initValue4);
   cartContent.totalCount += initValue4;
   cartAmount.textContent = cartContent.totalCount;
   cartContent.flavorAmounts.choice4 += initValue4;
@@ -186,6 +200,7 @@ decreaseQuantity5.addEventListener("click", () => {
   amount5.textContent = initValue5;
 });
 addToCart5.addEventListener("click", () => {
+  shoppingCartFlashing(initValue5);
   cartContent.totalCount += initValue5;
   cartAmount.textContent = cartContent.totalCount;
   cartContent.flavorAmounts.choice5 += initValue5;
@@ -203,6 +218,7 @@ decreaseQuantity6.addEventListener("click", () => {
   amount6.textContent = initValue6;
 });
 addToCart6.addEventListener("click", () => {
+  shoppingCartFlashing(initValue6);
   cartContent.totalCount += initValue6;
   cartAmount.textContent = cartContent.totalCount;
   cartContent.flavorAmounts.choice6 += initValue6;
@@ -220,6 +236,7 @@ decreaseQuantity7.addEventListener("click", () => {
   amount7.textContent = initValue7;
 });
 addToCart7.addEventListener("click", () => {
+  shoppingCartFlashing(initValue7);
   cartContent.totalCount += initValue7;
   cartAmount.textContent = cartContent.totalCount;
   cartContent.flavorAmounts.choice7 += initValue7;
@@ -237,6 +254,7 @@ decreaseQuantity8.addEventListener("click", () => {
   amount8.textContent = initValue8;
 });
 addToCart8.addEventListener("click", () => {
+  shoppingCartFlashing(initValue8);
   cartContent.totalCount += initValue8;
   cartAmount.textContent = cartContent.totalCount;
   cartContent.flavorAmounts.choice8 += initValue8;
@@ -254,6 +272,7 @@ decreaseQuantity9.addEventListener("click", () => {
   amount9.textContent = initValue9;
 });
 addToCart9.addEventListener("click", () => {
+  shoppingCartFlashing(initValue9);
   cartContent.totalCount += initValue9;
   cartAmount.textContent = cartContent.totalCount;
   cartContent.flavorAmounts.choice9 += initValue9;
@@ -271,6 +290,7 @@ decreaseQuantity10.addEventListener("click", () => {
   amount10.textContent = initValue10;
 });
 addToCart10.addEventListener("click", () => {
+  shoppingCartFlashing(initValue10);
   cartContent.totalCount += initValue10;
   cartAmount.textContent = cartContent.totalCount;
   cartContent.flavorAmounts.choice10 += initValue10;
