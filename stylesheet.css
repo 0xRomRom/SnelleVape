@@ -575,7 +575,7 @@ li {
   flex-direction: row;
   font-family: Helvetica, Sans-Serif;
   font-weight: 600;
-  font-size: 0.7rem;
+  font-size: 0.6rem;
   border-radius: 0.3rem;
 }
 
@@ -617,6 +617,8 @@ li {
 
 .fa-trash-can {
   font-size: 2rem;
+  /* box-shadow: 0px 0px 2px gray; */
+  border-radius: 1.2rem;
 }
 
 .trash-styling {

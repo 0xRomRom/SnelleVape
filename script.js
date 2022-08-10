@@ -170,8 +170,6 @@ const deleteFromCart = (item, key, value, amount) => {
   totalPrice.textContent = Math.abs(cartContent.totalPrice.toFixed(2));
   cartAmount.textContent = cartContent.totalCount;
   amount.textContent = "0";
-  console.log(cartContent.totalPrice);
-  console.log(cartContent.totalCount);
 };
 
 const decreaseCartHandler = (item, key, choiceAmount) => {
@@ -198,8 +196,11 @@ const increaseCartHandler = (key, choiceAmount) => {
   cartContent.totalCount++;
   cartAmount.textContent = cartContent.totalCount;
   //Increase total price
+  console.log(cartContent.totalPrice);
   cartContent.totalPrice += 9.95;
-  totalPrice.textContent = cartContent.totalPrice.toFixed(2);
+  totalPrice.textContent = Math.abs(cartContent.totalPrice.toFixed(2));
+  console.log(cartContent.totalPrice);
+  console.log(cartContent.totalCount);
 };
 
 increaseCart1.addEventListener("click", () => {
@@ -305,14 +306,13 @@ trashCan10.addEventListener("click", () => {
 });
 
 const cartRendering = () => {
+  cartContent.totalPrice = +(cartContent.totalCount * 9.95).toFixed(2);
   totalPrice.textContent = (cartContent.totalCount * 9.95).toFixed(2);
-  cartContent.totalPrice = (cartContent.totalCount * 9.95).toFixed(2);
   console.log(cartContent.totalPrice);
   console.log(cartContent.totalCount);
   for (let [key, value] of Object.entries(finalOrder)) {
     if (+value > 0) {
       if (key === "strawberryBanana") {
-        console.log(cartContent.flavorAmounts.strawberryBanana);
         choice1Title.textContent = "Strawberry Banana";
         choice1Amount.textContent = ` x ${value}`;
         choice1.classList.remove("hidden");
