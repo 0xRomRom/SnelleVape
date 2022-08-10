@@ -9,6 +9,9 @@ const hideCart = document.querySelector(".hide-cart");
 const checkoutCart = document.querySelector(".checkout-cart");
 const orderedItems = document.querySelector(".ordered-items");
 const totalPrice = document.querySelector(".total-order-price");
+const couponSubmit = document.querySelector(".coupon-submit");
+const couponInput = document.querySelector(".coupon-input");
+const discountPercentage = document.querySelector(".discount-percentage");
 
 const trashCan1 = document.querySelector(".trash1");
 const trashCan2 = document.querySelector(".trash2");
@@ -142,6 +145,8 @@ amount9.textContent = initValue9;
 amount10.textContent = initValue10;
 cartAmount.textContent = cartInit;
 checkoutCart.style.display = "none";
+let coupString = "snelle10";
+let someArray = [0];
 
 let cartContent = {
   totalCount: 0,
@@ -162,6 +167,37 @@ let cartContent = {
 let finalOrder = cartContent.flavorAmounts;
 let totalOrder = cartContent.totalPrice;
 
+couponSubmit.addEventListener("click", () => {
+  let discountedPrice = ((cartContent.totalPrice * 9) / 10).toFixed(2);
+  totalPrice.textContent = discountedPrice;
+  if (cartContent.totalCount === 0 && couponInput.value === coupString) {
+    someArray.pop();
+  }
+  if (couponInput.value !== coupString) {
+    couponInput.value = "";
+  }
+
+  if (someArray.length === 1) {
+    discountPercentage.classList.add("hidden");
+  }
+
+  if (someArray.length === 2) {
+    couponInput.value = "";
+
+    return;
+  }
+  if (couponInput.value === coupString) {
+    someArray.push(0);
+    console.log(someArray.length);
+    couponInput.value = "";
+    discountPercentage.classList.remove("hidden");
+    console.log(cartContent.totalPrice);
+    console.log(discountedPrice);
+    totalPrice.textContent = discountedPrice;
+    console.log("Discount!");
+  }
+});
+
 const deleteFromCart = (item, key, value, amount) => {
   item.classList.add("hidden");
   cartContent.flavorAmounts[key] = 0;
@@ -170,12 +206,21 @@ const deleteFromCart = (item, key, value, amount) => {
   totalPrice.textContent = Math.abs(cartContent.totalPrice.toFixed(2));
   cartAmount.textContent = cartContent.totalCount;
   amount.textContent = "0";
+  //Hide discount if cart is empty
+  if (cartContent.totalCount === 0) {
+    discountPercentage.classList.add("hidden");
+  }
 };
 
 const decreaseCartHandler = (item, key, choiceAmount) => {
+  console.log(cartContent.totalCount);
   //Hide product when quantity is 0
   if (cartContent.flavorAmounts[key] === 1) {
     item.classList.add("hidden");
+  }
+  //Hide discount if cart is empty
+  if (cartContent.totalCount <= 1) {
+    discountPercentage.classList.add("hidden");
   }
   //Decrease cart sum
   cartContent.flavorAmounts[key]--;
@@ -196,73 +241,97 @@ const increaseCartHandler = (key, choiceAmount) => {
   cartContent.totalCount++;
   cartAmount.textContent = cartContent.totalCount;
   //Increase total price
-  console.log(cartContent.totalPrice);
   cartContent.totalPrice += 9.95;
   totalPrice.textContent = Math.abs(cartContent.totalPrice.toFixed(2));
-  console.log(cartContent.totalPrice);
-  console.log(cartContent.totalCount);
+};
+
+const coupChecker = () => {
+  if (someArray.length === 2) {
+    let discountedPrice = ((cartContent.totalPrice * 9) / 10).toFixed(2);
+    totalPrice.textContent = discountedPrice;
+  }
 };
 
 increaseCart1.addEventListener("click", () => {
   increaseCartHandler("strawberryBanana", choice1Amount);
+  coupChecker();
 });
 increaseCart2.addEventListener("click", () => {
   increaseCartHandler("mixedBerry", choice2Amount);
+  coupChecker();
 });
 increaseCart3.addEventListener("click", () => {
   increaseCartHandler("redRazPassionFruit", choice3Amount);
+  coupChecker();
 });
 increaseCart4.addEventListener("click", () => {
   increaseCartHandler("gummyBear", choice4Amount);
+  coupChecker();
 });
 increaseCart5.addEventListener("click", () => {
   increaseCartHandler("pineappleMango", choice5Amount);
+  coupChecker();
 });
 increaseCart6.addEventListener("click", () => {
   increaseCartHandler("bubblegumIce", choice6Amount);
+  coupChecker();
 });
 increaseCart7.addEventListener("click", () => {
   increaseCartHandler("strawberryIcecream", choice7Amount);
+  coupChecker();
 });
 increaseCart8.addEventListener("click", () => {
   increaseCartHandler("orangeSoda", choice8Amount);
+  coupChecker();
 });
 increaseCart9.addEventListener("click", () => {
   increaseCartHandler("colaIce", choice9Amount);
+  coupChecker();
 });
 increaseCart10.addEventListener("click", () => {
   increaseCartHandler("honeydewMelon", choice10Amount);
+  coupChecker();
 });
 
 decreaseCart1.addEventListener("click", () => {
   decreaseCartHandler(choice1, "strawberryBanana", choice1Amount);
+  coupChecker();
 });
 decreaseCart2.addEventListener("click", () => {
   decreaseCartHandler(choice2, "mixedBerry", choice2Amount);
+  coupChecker();
 });
 decreaseCart3.addEventListener("click", () => {
   decreaseCartHandler(choice3, "redRazPassionFruit", choice3Amount);
+  coupChecker();
 });
 decreaseCart4.addEventListener("click", () => {
   decreaseCartHandler(choice4, "gummyBear", choice4Amount);
+  coupChecker();
 });
 decreaseCart5.addEventListener("click", () => {
   decreaseCartHandler(choice5, "pineappleMango", choice5Amount);
+  coupChecker();
 });
 decreaseCart6.addEventListener("click", () => {
   decreaseCartHandler(choice6, "bubblegumIce", choice6Amount);
+  coupChecker();
 });
 decreaseCart7.addEventListener("click", () => {
   decreaseCartHandler(choice7, "strawberryIcecream", choice7Amount);
+  coupChecker();
 });
 decreaseCart8.addEventListener("click", () => {
   decreaseCartHandler(choice8, "orangeSoda", choice8Amount);
+  coupChecker();
 });
 decreaseCart9.addEventListener("click", () => {
   decreaseCartHandler(choice9, "colaIce", choice9Amount);
+  coupChecker();
 });
 decreaseCart10.addEventListener("click", () => {
   decreaseCartHandler(choice10, "honeydewMelon", choice10Amount);
+  coupChecker();
 });
 trashCan1.addEventListener("click", () => {
   let cartValue = cartContent.flavorAmounts.strawberryBanana;
@@ -306,8 +375,17 @@ trashCan10.addEventListener("click", () => {
 });
 
 const cartRendering = () => {
+  console.log(someArray.length);
   cartContent.totalPrice = +(cartContent.totalCount * 9.95).toFixed(2);
   totalPrice.textContent = (cartContent.totalCount * 9.95).toFixed(2);
+  if (someArray.length === 2 && cartContent.totalCount === 0) {
+    discountPercentage.classList.add("hidden");
+  }
+  if (someArray.length === 2 && cartContent.totalCount > 0) {
+    let discountedPrice = ((cartContent.totalPrice * 9) / 10).toFixed(2);
+    totalPrice.textContent = discountedPrice;
+    discountPercentage.classList.remove("hidden");
+  }
   console.log(cartContent.totalPrice);
   console.log(cartContent.totalCount);
   for (let [key, value] of Object.entries(finalOrder)) {
@@ -383,6 +461,9 @@ shoppingCart.addEventListener("click", () => {
 //Hide cart
 hideCart.addEventListener("click", () => {
   checkoutCart.style.display = "none";
+  if (cartContent.totalCount === 0 && couponInput.value === coupString) {
+    someArray.pop();
+  }
 });
 
 const shoppingCartFlashing = (itemCount) => {

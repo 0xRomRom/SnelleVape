@@ -627,6 +627,30 @@ li {
   cursor: pointer;
 }
 
+.coupon-div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.coupon-label {
+  color: white;
+  font-family: Helvetica, Sans-Serif;
+  font-weight: 600;
+  font-size: 1.5rem;
+}
+
+.coupon-submit {
+  padding: 0.2rem 0.6rem;
+  color: green;
+  cursor: pointer;
+}
+
+.coupon-input {
+  padding: 0.2rem 0.5rem;
+}
+
 .total-price {
   display: flex;
   flex-direction: row;
@@ -642,6 +666,13 @@ li {
   color: white;
   font-family: Helvetica, Sans-Serif;
   font-weight: 600;
+}
+
+.discount-percentage {
+  color: green;
+  font-family: Helvetica, Sans-Serif;
+  font-weight: 600;
+  padding-left: 0.5rem;
 }
 
 .to-address {
