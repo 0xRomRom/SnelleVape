@@ -128,70 +128,73 @@ let cartContent = {
     bubblegumIce: 0,
     strawberryIcecream: 0,
     orangeSoda: 0,
-    colaIca: 0,
+    colaIce: 0,
     honeydewMelon: 0,
   },
 };
 let finalOrder = cartContent.flavorAmounts;
 let totalOrder = cartContent.totalPrice;
 
-const deleteFromCart = (item, key, value) => {
+const deleteFromCart = (item, key, value, amount) => {
   item.classList.add("hidden");
   cartContent.flavorAmounts[key] = 0;
   cartContent.totalCount -= value;
   cartContent.totalPrice -= (value * 9.95).toFixed(2);
   totalPrice.textContent = cartContent.totalPrice.toFixed(2);
-  cartAmount.textContent -= value;
+  cartAmount.textContent = cartContent.totalCount;
+  amount.textContent = "0";
+  console.log(cartContent.totalPrice);
+  console.log(cartContent.totalCount);
 };
 
 trashCan1.addEventListener("click", () => {
   let cartValue = cartContent.flavorAmounts.strawberryBanana;
-  deleteFromCart(choice1, "strawberryBanana", cartValue);
+  deleteFromCart(choice1, "strawberryBanana", cartValue, amount1);
 });
 
 trashCan2.addEventListener("click", () => {
   let cartValue = cartContent.flavorAmounts.mixedBerry;
-  deleteFromCart(choice2, "mixedBerry", cartValue);
+  deleteFromCart(choice2, "mixedBerry", cartValue, amount2);
 });
 
 trashCan3.addEventListener("click", () => {
   let cartValue = cartContent.flavorAmounts.redRazPassionFruit;
-  deleteFromCart(choice3, "redRazPassionFruit", cartValue);
+  deleteFromCart(choice3, "redRazPassionFruit", cartValue, amount3);
 });
 
 trashCan4.addEventListener("click", () => {
   let cartValue = cartContent.flavorAmounts.gummyBear;
-  deleteFromCart(choice4, "gummyBear", cartValue);
+  deleteFromCart(choice4, "gummyBear", cartValue, amount4);
 });
 
 trashCan5.addEventListener("click", () => {
   let cartValue = cartContent.flavorAmounts.pineappleMango;
-  deleteFromCart(choice5, "pineappleMango", cartValue);
+  deleteFromCart(choice5, "pineappleMango", cartValue, amount5);
 });
 
 trashCan6.addEventListener("click", () => {
   let cartValue = cartContent.flavorAmounts.bubblegumIce;
-  deleteFromCart(choice6, "bubblegumIce", cartValue);
+  deleteFromCart(choice6, "bubblegumIce", cartValue, amount6);
 });
 
 trashCan7.addEventListener("click", () => {
   let cartValue = cartContent.flavorAmounts.strawberryIcecream;
-  deleteFromCart(choice7, "strawberryIcecream", cartValue);
+  deleteFromCart(choice7, "strawberryIcecream", cartValue, amount7);
 });
 
 trashCan8.addEventListener("click", () => {
   let cartValue = cartContent.flavorAmounts.orangeSoda;
-  deleteFromCart(choice8, "orangeSoda", cartValue);
+  deleteFromCart(choice8, "orangeSoda", cartValue, amount8);
 });
 
 trashCan9.addEventListener("click", () => {
-  let cartValue = cartContent.flavorAmounts.colaIca;
-  deleteFromCart(choice9, "colaIce", cartValue);
+  let cartValue = cartContent.flavorAmounts.colaIce;
+  deleteFromCart(choice9, "colaIce", cartValue, amount9);
 });
 
 trashCan10.addEventListener("click", () => {
   let cartValue = cartContent.flavorAmounts.honeydewMelon;
-  deleteFromCart(choice10, "honeydewMelon", cartValue);
+  deleteFromCart(choice10, "honeydewMelon", cartValue, amount10);
 });
 
 const cartRendering = () => {
@@ -241,7 +244,7 @@ const cartRendering = () => {
         choice8Amount.textContent = ` x ${value}`;
         choice8.classList.remove("hidden");
       }
-      if (key === "colaIca") {
+      if (key === "colaIce") {
         choice9Title.textContent = "Cola Ice";
         choice9Amount.textContent = ` x ${value}`;
         choice9.classList.remove("hidden");
@@ -441,7 +444,7 @@ addToCart9.addEventListener("click", () => {
   shoppingCartFlashing(initValue9);
   cartContent.totalCount += initValue9;
   cartAmount.textContent = cartContent.totalCount;
-  cartContent.flavorAmounts.colaIca += initValue9;
+  cartContent.flavorAmounts.colaIce += initValue9;
   initValue9 = 0;
   amount9.textContent = initValue9;
 });
