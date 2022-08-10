@@ -9,6 +9,7 @@ const hideCart = document.querySelector(".hide-cart");
 const checkoutCart = document.querySelector(".checkout-cart");
 const orderedItems = document.querySelector(".ordered-items");
 const totalPrice = document.querySelector(".total-order-price");
+
 const trashCan1 = document.querySelector(".trash1");
 const trashCan2 = document.querySelector(".trash2");
 const trashCan3 = document.querySelector(".trash3");
@@ -19,6 +20,7 @@ const trashCan7 = document.querySelector(".trash7");
 const trashCan8 = document.querySelector(".trash8");
 const trashCan9 = document.querySelector(".trash9");
 const trashCan10 = document.querySelector(".trash10");
+
 const decreaseQuantity1 = document.querySelector(".min1");
 const decreaseQuantity2 = document.querySelector(".min2");
 const decreaseQuantity3 = document.querySelector(".min3");
@@ -29,6 +31,7 @@ const decreaseQuantity7 = document.querySelector(".min7");
 const decreaseQuantity8 = document.querySelector(".min8");
 const decreaseQuantity9 = document.querySelector(".min9");
 const decreaseQuantity10 = document.querySelector(".min10");
+
 const increaseQuantity1 = document.querySelector(".plus1");
 const increaseQuantity2 = document.querySelector(".plus2");
 const increaseQuantity3 = document.querySelector(".plus3");
@@ -39,6 +42,7 @@ const increaseQuantity7 = document.querySelector(".plus7");
 const increaseQuantity8 = document.querySelector(".plus8");
 const increaseQuantity9 = document.querySelector(".plus9");
 const increaseQuantity10 = document.querySelector(".plus10");
+
 const amount1 = document.querySelector(".amount1");
 const amount2 = document.querySelector(".amount2");
 const amount3 = document.querySelector(".amount3");
@@ -49,6 +53,7 @@ const amount7 = document.querySelector(".amount7");
 const amount8 = document.querySelector(".amount8");
 const amount9 = document.querySelector(".amount9");
 const amount10 = document.querySelector(".amount10");
+
 const addToCart1 = document.querySelector(".cartAdd1");
 const addToCart2 = document.querySelector(".cartAdd2");
 const addToCart3 = document.querySelector(".cartAdd3");
@@ -59,6 +64,28 @@ const addToCart7 = document.querySelector(".cartAdd7");
 const addToCart8 = document.querySelector(".cartAdd8");
 const addToCart9 = document.querySelector(".cartAdd9");
 const addToCart10 = document.querySelector(".cartAdd10");
+
+const decreaseCart1 = document.querySelector(".decrement1");
+const decreaseCart2 = document.querySelector(".decrement2");
+const decreaseCart3 = document.querySelector(".decrement3");
+const decreaseCart4 = document.querySelector(".decrement4");
+const decreaseCart5 = document.querySelector(".decrement5");
+const decreaseCart6 = document.querySelector(".decrement6");
+const decreaseCart7 = document.querySelector(".decrement7");
+const decreaseCart8 = document.querySelector(".decrement8");
+const decreaseCart9 = document.querySelector(".decrement9");
+const decreaseCart10 = document.querySelector(".decrement10");
+
+const increaseCart1 = document.querySelector(".increment1");
+const increaseCart2 = document.querySelector(".increment2");
+const increaseCart3 = document.querySelector(".increment3");
+const increaseCart4 = document.querySelector(".increment4");
+const increaseCart5 = document.querySelector(".increment5");
+const increaseCart6 = document.querySelector(".increment6");
+const increaseCart7 = document.querySelector(".increment7");
+const increaseCart8 = document.querySelector(".increment8");
+const increaseCart9 = document.querySelector(".increment9");
+const increaseCart10 = document.querySelector(".increment10");
 
 const choice1 = document.querySelector(".choice1");
 const choice1Title = document.querySelector(".choice1-title");
@@ -140,58 +167,138 @@ const deleteFromCart = (item, key, value, amount) => {
   cartContent.flavorAmounts[key] = 0;
   cartContent.totalCount -= value;
   cartContent.totalPrice -= (value * 9.95).toFixed(2);
-  totalPrice.textContent = cartContent.totalPrice.toFixed(2);
+  totalPrice.textContent = Math.abs(cartContent.totalPrice.toFixed(2));
   cartAmount.textContent = cartContent.totalCount;
   amount.textContent = "0";
   console.log(cartContent.totalPrice);
   console.log(cartContent.totalCount);
 };
 
+const decreaseCartHandler = (item, key, choiceAmount) => {
+  //Hide product when quantity is 0
+  if (cartContent.flavorAmounts[key] === 1) {
+    item.classList.add("hidden");
+  }
+  //Decrease cart sum
+  cartContent.flavorAmounts[key]--;
+  choiceAmount.textContent = `x ${cartContent.flavorAmounts[key]}`;
+  //Decrease cart amount
+  cartContent.totalCount--;
+  cartAmount.textContent = cartContent.totalCount;
+  //Decrease total price
+  cartContent.totalPrice -= 9.95;
+  totalPrice.textContent = Math.abs(cartContent.totalPrice.toFixed(2));
+};
+
+const increaseCartHandler = (key, choiceAmount) => {
+  //Update cart and choice amount
+  cartContent.flavorAmounts[key]++;
+  choiceAmount.textContent = `x ${cartContent.flavorAmounts[key]}`;
+  //Increase cart amount
+  cartContent.totalCount++;
+  cartAmount.textContent = cartContent.totalCount;
+  //Increase total price
+  cartContent.totalPrice += 9.95;
+  totalPrice.textContent = cartContent.totalPrice.toFixed(2);
+};
+
+increaseCart1.addEventListener("click", () => {
+  increaseCartHandler("strawberryBanana", choice1Amount);
+});
+increaseCart2.addEventListener("click", () => {
+  increaseCartHandler("mixedBerry", choice2Amount);
+});
+increaseCart3.addEventListener("click", () => {
+  increaseCartHandler("redRazPassionFruit", choice3Amount);
+});
+increaseCart4.addEventListener("click", () => {
+  increaseCartHandler("gummyBear", choice4Amount);
+});
+increaseCart5.addEventListener("click", () => {
+  increaseCartHandler("pineappleMango", choice5Amount);
+});
+increaseCart6.addEventListener("click", () => {
+  increaseCartHandler("bubblegumIce", choice6Amount);
+});
+increaseCart7.addEventListener("click", () => {
+  increaseCartHandler("strawberryIcecream", choice7Amount);
+});
+increaseCart8.addEventListener("click", () => {
+  increaseCartHandler("orangeSoda", choice8Amount);
+});
+increaseCart9.addEventListener("click", () => {
+  increaseCartHandler("colaIce", choice9Amount);
+});
+increaseCart10.addEventListener("click", () => {
+  increaseCartHandler("honeydewMelon", choice10Amount);
+});
+
+decreaseCart1.addEventListener("click", () => {
+  decreaseCartHandler(choice1, "strawberryBanana", choice1Amount);
+});
+decreaseCart2.addEventListener("click", () => {
+  decreaseCartHandler(choice2, "mixedBerry", choice2Amount);
+});
+decreaseCart3.addEventListener("click", () => {
+  decreaseCartHandler(choice3, "redRazPassionFruit", choice3Amount);
+});
+decreaseCart4.addEventListener("click", () => {
+  decreaseCartHandler(choice4, "gummyBear", choice4Amount);
+});
+decreaseCart5.addEventListener("click", () => {
+  decreaseCartHandler(choice5, "pineappleMango", choice5Amount);
+});
+decreaseCart6.addEventListener("click", () => {
+  decreaseCartHandler(choice6, "bubblegumIce", choice6Amount);
+});
+decreaseCart7.addEventListener("click", () => {
+  decreaseCartHandler(choice7, "strawberryIcecream", choice7Amount);
+});
+decreaseCart8.addEventListener("click", () => {
+  decreaseCartHandler(choice8, "orangeSoda", choice8Amount);
+});
+decreaseCart9.addEventListener("click", () => {
+  decreaseCartHandler(choice9, "colaIce", choice9Amount);
+});
+decreaseCart10.addEventListener("click", () => {
+  decreaseCartHandler(choice10, "honeydewMelon", choice10Amount);
+});
 trashCan1.addEventListener("click", () => {
   let cartValue = cartContent.flavorAmounts.strawberryBanana;
   deleteFromCart(choice1, "strawberryBanana", cartValue, amount1);
 });
-
 trashCan2.addEventListener("click", () => {
   let cartValue = cartContent.flavorAmounts.mixedBerry;
   deleteFromCart(choice2, "mixedBerry", cartValue, amount2);
 });
-
 trashCan3.addEventListener("click", () => {
   let cartValue = cartContent.flavorAmounts.redRazPassionFruit;
   deleteFromCart(choice3, "redRazPassionFruit", cartValue, amount3);
 });
-
 trashCan4.addEventListener("click", () => {
   let cartValue = cartContent.flavorAmounts.gummyBear;
   deleteFromCart(choice4, "gummyBear", cartValue, amount4);
 });
-
 trashCan5.addEventListener("click", () => {
   let cartValue = cartContent.flavorAmounts.pineappleMango;
   deleteFromCart(choice5, "pineappleMango", cartValue, amount5);
 });
-
 trashCan6.addEventListener("click", () => {
   let cartValue = cartContent.flavorAmounts.bubblegumIce;
   deleteFromCart(choice6, "bubblegumIce", cartValue, amount6);
 });
-
 trashCan7.addEventListener("click", () => {
   let cartValue = cartContent.flavorAmounts.strawberryIcecream;
   deleteFromCart(choice7, "strawberryIcecream", cartValue, amount7);
 });
-
 trashCan8.addEventListener("click", () => {
   let cartValue = cartContent.flavorAmounts.orangeSoda;
   deleteFromCart(choice8, "orangeSoda", cartValue, amount8);
 });
-
 trashCan9.addEventListener("click", () => {
   let cartValue = cartContent.flavorAmounts.colaIce;
   deleteFromCart(choice9, "colaIce", cartValue, amount9);
 });
-
 trashCan10.addEventListener("click", () => {
   let cartValue = cartContent.flavorAmounts.honeydewMelon;
   deleteFromCart(choice10, "honeydewMelon", cartValue, amount10);
@@ -205,6 +312,7 @@ const cartRendering = () => {
   for (let [key, value] of Object.entries(finalOrder)) {
     if (+value > 0) {
       if (key === "strawberryBanana") {
+        console.log(cartContent.flavorAmounts.strawberryBanana);
         choice1Title.textContent = "Strawberry Banana";
         choice1Amount.textContent = ` x ${value}`;
         choice1.classList.remove("hidden");
