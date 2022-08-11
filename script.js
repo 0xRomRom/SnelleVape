@@ -239,7 +239,7 @@ const decreaseCartHandler = (item, key, choiceAmount) => {
   cartContent.totalCount--;
   choiceAmount.textContent = `x ${cartContent.flavorAmounts[key]}`;
   cartAmount.textContent = cartContent.totalCount;
-  totalPrice.textContent = cartContent.totalPrice.toFixed(2);
+  totalPrice.textContent = Math.abs(cartContent.totalPrice).toFixed(2);
   freeVapeHandler();
 };
 
@@ -249,7 +249,7 @@ const increaseCartHandler = (key, choiceAmount) => {
   cartContent.totalCount++;
   choiceAmount.textContent = `x ${cartContent.flavorAmounts[key]}`;
   cartAmount.textContent = cartContent.totalCount;
-  totalPrice.textContent = cartContent.totalPrice.toFixed(2);
+  totalPrice.textContent = Math.abs(cartContent.totalPrice).toFixed(2);
   freeVapeHandler();
 };
 
@@ -448,7 +448,9 @@ shoppingCart.addEventListener("click", () => {
 //Hide cart
 hideCart.addEventListener("click", () => {
   checkoutCart.style.display = "none";
-  someArray.pop();
+  if (someArray.length === 2) {
+    someArray.pop();
+  }
   menuCover.classList.add("hidden");
   cartContent.totalPrice = cartContent.totalCount * 9.95;
   discountPercentage.classList.add("hidden");
@@ -464,7 +466,9 @@ hideCart.addEventListener("click", () => {
 });
 mainMenu.addEventListener("click", () => {
   checkoutCart.style.display = "none";
-  someArray.pop();
+  if (someArray.length === 2) {
+    someArray.pop();
+  }
   menuCover.classList.add("hidden");
   cartContent.totalPrice = cartContent.totalCount * 9.95;
   discountPercentage.classList.add("hidden");
