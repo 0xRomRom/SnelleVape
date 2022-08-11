@@ -13,7 +13,9 @@ const couponSubmit = document.querySelector(".coupon-submit");
 const couponInput = document.querySelector(".coupon-input");
 const discountPercentage = document.querySelector(".discount-percentage");
 const gratisVape1 = document.querySelector(".gratisvape-1");
+const freeVapeOption1 = document.querySelector("#freevape1");
 const gratisVape2 = document.querySelector(".gratisvape-2");
+const freeVapeOption2 = document.querySelector("#freevape2");
 const menuCover = document.querySelector(".total-box-cover");
 const correctOrder = document.querySelector(".to-address");
 
@@ -173,6 +175,12 @@ let cartContent = {
 let finalOrder = cartContent.flavorAmounts;
 let totalOrder = cartContent.totalPrice;
 let totalCount = cartContent.totalCount;
+
+correctOrder.addEventListener("click", () => {
+  cartContent.freeVape1 = freeVapeOption1.value;
+  cartContent.freeVape2 = freeVapeOption2.value;
+  console.log(cartContent);
+});
 
 couponSubmit.addEventListener("click", () => {
   if (cartContent.totalCount === 0) {
@@ -442,6 +450,8 @@ hideCart.addEventListener("click", () => {
   cartContent.totalPrice = cartContent.totalCount * 9.95;
   discountPercentage.classList.add("hidden");
   correctOrder.classList.remove("cart-finished");
+  freeVapeOption1.value = "strawberryBanana";
+  freeVapeOption2.value = "strawberryBanana";
 });
 
 const shoppingCartFlashing = (itemCount) => {
