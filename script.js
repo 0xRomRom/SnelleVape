@@ -12,6 +12,9 @@ const totalPrice = document.querySelector(".total-order-price");
 const couponSubmit = document.querySelector(".coupon-submit");
 const couponInput = document.querySelector(".coupon-input");
 const discountPercentage = document.querySelector(".discount-percentage");
+const gratisVape1 = document.querySelector(".gratisvape-1");
+const gratisVape2 = document.querySelector(".gratisvape-2");
+const menuCover = document.querySelector(".total-box-cover");
 
 const trashCan1 = document.querySelector(".trash1");
 const trashCan2 = document.querySelector(".trash2");
@@ -151,6 +154,8 @@ let someArray = [0];
 let cartContent = {
   totalCount: 0,
   totalPrice: 0,
+  freeVape1: "",
+  freeVape2: "",
   flavorAmounts: {
     strawberryBanana: 0,
     mixedBerry: 0,
@@ -166,39 +171,35 @@ let cartContent = {
 };
 let finalOrder = cartContent.flavorAmounts;
 let totalOrder = cartContent.totalPrice;
+let totalCount = cartContent.totalCount;
 
 couponSubmit.addEventListener("click", () => {
-  let discountedPrice = ((cartContent.totalPrice * 9) / 10).toFixed(2);
-  totalPrice.textContent = discountedPrice;
-  if (cartContent.totalCount === 0 && couponInput.value === coupString) {
-    someArray.pop();
+  if (cartContent.totalCount === 0) {
+    couponInput.value = "";
+    return;
   }
   if (couponInput.value !== coupString) {
     couponInput.value = "";
-  }
-
-  if (someArray.length === 1) {
-    discountPercentage.classList.add("hidden");
-  }
-
-  if (someArray.length === 2) {
-    couponInput.value = "";
-
     return;
   }
   if (couponInput.value === coupString) {
-    someArray.push(0);
-    console.log(someArray.length);
     couponInput.value = "";
+    if (someArray.length === 2) return;
+    someArray.push(0);
+    cartContent.totalPrice = +((cartContent.totalPrice / 100) * 90).toFixed(2);
     discountPercentage.classList.remove("hidden");
-    console.log(cartContent.totalPrice);
-    console.log(discountedPrice);
-    totalPrice.textContent = discountedPrice;
-    console.log("Discount!");
+    totalPrice.textContent = cartContent.totalPrice;
+    menuCover.classList.remove("hidden");
+    const couponLabel = document.querySelector(".coupon-label");
+    couponLabel.style.color = "green";
+    couponInput.placeholder = "10% Korting!";
+    couponSubmit.style.backgroundColor = "green";
+    couponSubmit.style.color = "white";
   }
 });
 
 const deleteFromCart = (item, key, value, amount) => {
+  console.log(cartContent.totalPrice);
   item.classList.add("hidden");
   cartContent.flavorAmounts[key] = 0;
   cartContent.totalCount -= value;
@@ -210,128 +211,109 @@ const deleteFromCart = (item, key, value, amount) => {
   if (cartContent.totalCount === 0) {
     discountPercentage.classList.add("hidden");
   }
+  //Called here because it's used multiple times
+  freeVapeHandler();
+  console.log(cartContent.totalPrice);
 };
 
 const decreaseCartHandler = (item, key, choiceAmount) => {
-  console.log(cartContent.totalCount);
-  //Hide product when quantity is 0
-  if (cartContent.flavorAmounts[key] === 1) {
+  cartContent.flavorAmounts[key]--;
+  if (cartContent.flavorAmounts[key] === 0) {
     item.classList.add("hidden");
   }
-  //Hide discount if cart is empty
-  if (cartContent.totalCount <= 1) {
-    discountPercentage.classList.add("hidden");
-  }
-  //Decrease cart sum
-  cartContent.flavorAmounts[key]--;
-  choiceAmount.textContent = `x ${cartContent.flavorAmounts[key]}`;
-  //Decrease cart amount
+  cartContent.totalPrice = cartContent.totalPrice - 9.95;
   cartContent.totalCount--;
+  choiceAmount.textContent = `x ${cartContent.flavorAmounts[key]}`;
   cartAmount.textContent = cartContent.totalCount;
-  //Decrease total price
-  cartContent.totalPrice -= 9.95;
-  totalPrice.textContent = Math.abs(cartContent.totalPrice.toFixed(2));
+  totalPrice.textContent = cartContent.totalPrice.toFixed(2);
+  freeVapeHandler();
 };
 
 const increaseCartHandler = (key, choiceAmount) => {
-  //Update cart and choice amount
+  cartContent.totalPrice = cartContent.totalPrice + 9.95;
   cartContent.flavorAmounts[key]++;
-  choiceAmount.textContent = `x ${cartContent.flavorAmounts[key]}`;
-  //Increase cart amount
   cartContent.totalCount++;
+  choiceAmount.textContent = `x ${cartContent.flavorAmounts[key]}`;
   cartAmount.textContent = cartContent.totalCount;
-  //Increase total price
-  cartContent.totalPrice += 9.95;
-  totalPrice.textContent = Math.abs(cartContent.totalPrice.toFixed(2));
+  totalPrice.textContent = cartContent.totalPrice.toFixed(2);
+  freeVapeHandler();
 };
 
-const coupChecker = () => {
-  if (someArray.length === 2) {
-    let discountedPrice = ((cartContent.totalPrice * 9) / 10).toFixed(2);
-    totalPrice.textContent = discountedPrice;
+const freeVapeHandler = () => {
+  if (cartContent.totalCount > 4) {
+    gratisVape1.classList.remove("hidden");
+  }
+  if (cartContent.totalCount > 9) {
+    gratisVape2.classList.remove("hidden");
+  }
+  if (cartContent.totalCount < 5) {
+    gratisVape1.classList.add("hidden");
+  }
+  if (cartContent.totalCount < 10) {
+    gratisVape2.classList.add("hidden");
   }
 };
 
 increaseCart1.addEventListener("click", () => {
   increaseCartHandler("strawberryBanana", choice1Amount);
-  coupChecker();
 });
 increaseCart2.addEventListener("click", () => {
   increaseCartHandler("mixedBerry", choice2Amount);
-  coupChecker();
 });
 increaseCart3.addEventListener("click", () => {
   increaseCartHandler("redRazPassionFruit", choice3Amount);
-  coupChecker();
 });
 increaseCart4.addEventListener("click", () => {
   increaseCartHandler("gummyBear", choice4Amount);
-  coupChecker();
 });
 increaseCart5.addEventListener("click", () => {
   increaseCartHandler("pineappleMango", choice5Amount);
-  coupChecker();
 });
 increaseCart6.addEventListener("click", () => {
   increaseCartHandler("bubblegumIce", choice6Amount);
-  coupChecker();
 });
 increaseCart7.addEventListener("click", () => {
   increaseCartHandler("strawberryIcecream", choice7Amount);
-  coupChecker();
 });
 increaseCart8.addEventListener("click", () => {
   increaseCartHandler("orangeSoda", choice8Amount);
-  coupChecker();
 });
 increaseCart9.addEventListener("click", () => {
   increaseCartHandler("colaIce", choice9Amount);
-  coupChecker();
 });
 increaseCart10.addEventListener("click", () => {
   increaseCartHandler("honeydewMelon", choice10Amount);
-  coupChecker();
 });
 
 decreaseCart1.addEventListener("click", () => {
   decreaseCartHandler(choice1, "strawberryBanana", choice1Amount);
-  coupChecker();
 });
 decreaseCart2.addEventListener("click", () => {
   decreaseCartHandler(choice2, "mixedBerry", choice2Amount);
-  coupChecker();
 });
 decreaseCart3.addEventListener("click", () => {
   decreaseCartHandler(choice3, "redRazPassionFruit", choice3Amount);
-  coupChecker();
 });
 decreaseCart4.addEventListener("click", () => {
   decreaseCartHandler(choice4, "gummyBear", choice4Amount);
-  coupChecker();
 });
 decreaseCart5.addEventListener("click", () => {
   decreaseCartHandler(choice5, "pineappleMango", choice5Amount);
-  coupChecker();
 });
 decreaseCart6.addEventListener("click", () => {
   decreaseCartHandler(choice6, "bubblegumIce", choice6Amount);
-  coupChecker();
 });
 decreaseCart7.addEventListener("click", () => {
   decreaseCartHandler(choice7, "strawberryIcecream", choice7Amount);
-  coupChecker();
 });
 decreaseCart8.addEventListener("click", () => {
   decreaseCartHandler(choice8, "orangeSoda", choice8Amount);
-  coupChecker();
 });
 decreaseCart9.addEventListener("click", () => {
   decreaseCartHandler(choice9, "colaIce", choice9Amount);
-  coupChecker();
 });
 decreaseCart10.addEventListener("click", () => {
   decreaseCartHandler(choice10, "honeydewMelon", choice10Amount);
-  coupChecker();
 });
 trashCan1.addEventListener("click", () => {
   let cartValue = cartContent.flavorAmounts.strawberryBanana;
@@ -375,19 +357,11 @@ trashCan10.addEventListener("click", () => {
 });
 
 const cartRendering = () => {
-  console.log(someArray.length);
-  cartContent.totalPrice = +(cartContent.totalCount * 9.95).toFixed(2);
-  totalPrice.textContent = (cartContent.totalCount * 9.95).toFixed(2);
-  if (someArray.length === 2 && cartContent.totalCount === 0) {
-    discountPercentage.classList.add("hidden");
-  }
-  if (someArray.length === 2 && cartContent.totalCount > 0) {
-    let discountedPrice = ((cartContent.totalPrice * 9) / 10).toFixed(2);
-    totalPrice.textContent = discountedPrice;
-    discountPercentage.classList.remove("hidden");
-  }
-  console.log(cartContent.totalPrice);
-  console.log(cartContent.totalCount);
+  console.log(`TotalCount: ${cartContent.totalCount}`);
+  console.log(`TotalPrice: ${cartContent.totalPrice}`);
+  freeVapeHandler();
+  totalPrice.textContent = cartContent.totalPrice.toFixed(2);
+
   for (let [key, value] of Object.entries(finalOrder)) {
     if (+value > 0) {
       if (key === "strawberryBanana") {
@@ -461,9 +435,10 @@ shoppingCart.addEventListener("click", () => {
 //Hide cart
 hideCart.addEventListener("click", () => {
   checkoutCart.style.display = "none";
-  if (cartContent.totalCount === 0 && couponInput.value === coupString) {
-    someArray.pop();
-  }
+  someArray.pop();
+  menuCover.classList.add("hidden");
+  cartContent.totalPrice = cartContent.totalCount * 9.95;
+  discountPercentage.classList.add("hidden");
 });
 
 const shoppingCartFlashing = (itemCount) => {
@@ -488,6 +463,7 @@ decreaseQuantity1.addEventListener("click", () => {
 addToCart1.addEventListener("click", () => {
   shoppingCartFlashing(initValue1);
   cartContent.totalCount += initValue1;
+  cartContent.totalPrice += +(initValue1 * 9.95).toFixed(2);
   cartAmount.textContent = cartContent.totalCount;
   cartContent.flavorAmounts.strawberryBanana += initValue1;
   initValue1 = 0;
@@ -506,6 +482,7 @@ decreaseQuantity2.addEventListener("click", () => {
 addToCart2.addEventListener("click", () => {
   shoppingCartFlashing(initValue2);
   cartContent.totalCount += initValue2;
+  cartContent.totalPrice += +(initValue2 * 9.95).toFixed(2);
   cartAmount.textContent = cartContent.totalCount;
   cartContent.flavorAmounts.mixedBerry += initValue2;
   initValue2 = 0;
@@ -524,6 +501,7 @@ decreaseQuantity3.addEventListener("click", () => {
 addToCart3.addEventListener("click", () => {
   shoppingCartFlashing(initValue3);
   cartContent.totalCount += initValue3;
+  cartContent.totalPrice += +(initValue3 * 9.95).toFixed(2);
   cartAmount.textContent = cartContent.totalCount;
   cartContent.flavorAmounts.redRazPassionFruit += initValue3;
   initValue3 = 0;
@@ -543,6 +521,7 @@ addToCart4.addEventListener("click", () => {
   shoppingCartFlashing(initValue4);
   cartContent.totalCount += initValue4;
   cartAmount.textContent = cartContent.totalCount;
+  cartContent.totalPrice += +(initValue4 * 9.95).toFixed(2);
   cartContent.flavorAmounts.gummyBear += initValue4;
   initValue4 = 0;
   amount4.textContent = initValue4;
@@ -560,6 +539,7 @@ decreaseQuantity5.addEventListener("click", () => {
 addToCart5.addEventListener("click", () => {
   shoppingCartFlashing(initValue5);
   cartContent.totalCount += initValue5;
+  cartContent.totalPrice += +(initValue5 * 9.95).toFixed(2);
   cartAmount.textContent = cartContent.totalCount;
   cartContent.flavorAmounts.pineappleMango += initValue5;
   initValue5 = 0;
@@ -578,6 +558,7 @@ decreaseQuantity6.addEventListener("click", () => {
 addToCart6.addEventListener("click", () => {
   shoppingCartFlashing(initValue6);
   cartContent.totalCount += initValue6;
+  cartContent.totalPrice += +(initValue6 * 9.95).toFixed(2);
   cartAmount.textContent = cartContent.totalCount;
   cartContent.flavorAmounts.bubblegumIce += initValue6;
   initValue6 = 0;
@@ -596,6 +577,7 @@ decreaseQuantity7.addEventListener("click", () => {
 addToCart7.addEventListener("click", () => {
   shoppingCartFlashing(initValue7);
   cartContent.totalCount += initValue7;
+  cartContent.totalPrice += +(initValue7 * 9.95).toFixed(2);
   cartAmount.textContent = cartContent.totalCount;
   cartContent.flavorAmounts.strawberryIcecream += initValue7;
   initValue7 = 0;
@@ -614,6 +596,7 @@ decreaseQuantity8.addEventListener("click", () => {
 addToCart8.addEventListener("click", () => {
   shoppingCartFlashing(initValue8);
   cartContent.totalCount += initValue8;
+  cartContent.totalPrice += +(initValue8 * 9.95).toFixed(2);
   cartAmount.textContent = cartContent.totalCount;
   cartContent.flavorAmounts.orangeSoda += initValue8;
   initValue8 = 0;
@@ -632,6 +615,7 @@ decreaseQuantity9.addEventListener("click", () => {
 addToCart9.addEventListener("click", () => {
   shoppingCartFlashing(initValue9);
   cartContent.totalCount += initValue9;
+  cartContent.totalPrice += +(initValue9 * 9.95).toFixed(2);
   cartAmount.textContent = cartContent.totalCount;
   cartContent.flavorAmounts.colaIce += initValue9;
   initValue9 = 0;
@@ -650,6 +634,7 @@ decreaseQuantity10.addEventListener("click", () => {
 addToCart10.addEventListener("click", () => {
   shoppingCartFlashing(initValue10);
   cartContent.totalCount += initValue10;
+  cartContent.totalPrice += +(initValue10 * 9.95).toFixed(2);
   cartAmount.textContent = cartContent.totalCount;
   cartContent.flavorAmounts.honeydewMelon += initValue10;
   initValue10 = 0;

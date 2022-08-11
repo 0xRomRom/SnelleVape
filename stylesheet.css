@@ -560,6 +560,21 @@ li {
   padding-top: 1rem;
 }
 
+.total-box-cover {
+  position: absolute;
+  width: 25vw;
+  height: 100%;
+  top: 0rem;
+  background-color: transparent;
+  border-radius: 0.3rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  z-index: 300;
+  border: 5px solid green;
+}
+
 .choice-styling {
   position: relative;
   height: 3rem;
@@ -577,6 +592,28 @@ li {
   font-weight: 600;
   font-size: 0.6rem;
   border-radius: 0.3rem;
+}
+
+.kiesvape1 {
+  font-family: Helvetica, Sans-Serif;
+  font-weight: 600;
+  font-size: 1rem;
+}
+#freevape1 {
+  border-radius: 0.2rem;
+  padding: 0.3rem 0.5rem;
+  cursor: pointer;
+}
+
+.kiesvape2 {
+  font-family: Helvetica, Sans-Serif;
+  font-weight: 600;
+  font-size: 1rem;
+}
+#freevape2 {
+  border-radius: 0.2rem;
+  padding: 0.3rem 0.5rem;
+  cursor: pointer;
 }
 
 .cart-text {
