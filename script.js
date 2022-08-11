@@ -2,6 +2,7 @@
 
 const menuOptions = document.querySelector(".menu-options");
 const mainMenu = document.querySelector(".main-menu");
+const progressMenu = document.querySelector(".progress-menu");
 const burgerMenu = document.querySelector(".menu");
 const shoppingCart = document.querySelector(".shopping-cart");
 const formAmount = document.querySelector(".amount-value");
@@ -161,6 +162,7 @@ let cartContent = {
   totalPrice: 0,
   freeVape1: "",
   freeVape2: "",
+  discount: false,
   flavorAmounts: {
     strawberryBanana: 0,
     mixedBerry: 0,
@@ -206,6 +208,7 @@ couponSubmit.addEventListener("click", () => {
     couponSubmit.style.backgroundColor = "green";
     couponSubmit.style.color = "white";
     correctOrder.classList.add("cart-finished");
+    cartContent.discount = true;
   }
 });
 
@@ -368,8 +371,7 @@ trashCan10.addEventListener("click", () => {
 });
 
 const cartRendering = () => {
-  console.log(`TotalCount: ${cartContent.totalCount}`);
-  console.log(`TotalPrice: ${cartContent.totalPrice}`);
+  progressMenu.classList.remove("hidden");
   freeVapeHandler();
   totalPrice.textContent = cartContent.totalPrice.toFixed(2);
 
@@ -457,6 +459,8 @@ hideCart.addEventListener("click", () => {
   couponInput.placeholder = " ";
   couponSubmit.style.backgroundColor = "white";
   couponSubmit.style.color = "black";
+  cartContent.discount = false;
+  progressMenu.classList.add("hidden");
 });
 mainMenu.addEventListener("click", () => {
   checkoutCart.style.display = "none";
@@ -471,6 +475,8 @@ mainMenu.addEventListener("click", () => {
   couponInput.placeholder = " ";
   couponSubmit.style.backgroundColor = "white";
   couponSubmit.style.color = "black";
+  cartContent.discount = false;
+  progressMenu.classList.add("hidden");
 });
 
 const shoppingCartFlashing = (itemCount) => {

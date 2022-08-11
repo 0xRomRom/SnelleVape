@@ -365,7 +365,7 @@ li {
   height: 40rem;
   background: rgb(49, 7, 44);
   box-shadow: 0px 0px 12px rgb(191, 28, 169);
-  border-radius: 0.3rem;
+  border-radius: 0.4rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -528,6 +528,63 @@ li {
   align-items: center;
   flex-direction: column;
   gap: 1rem;
+}
+
+.progress-menu {
+  position: absolute;
+  height: 20rem;
+  width: 4rem;
+  left: 70vw;
+  top: 20rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  /* background-color: rgb(49, 7, 44); */
+  z-index: 300;
+}
+.bar1 {
+  width: 1rem;
+  height: 40%;
+  background-color: white;
+  box-shadow: 0px 0px 10px white;
+}
+
+.bar2 {
+  width: 1rem;
+  height: 40%;
+  background-color: white;
+  box-shadow: 0px 0px 10px white;
+}
+.round1 {
+  height: 20%;
+  width: 3rem;
+  z-index: 400;
+  border-radius: 2rem;
+  background-color: green;
+  box-shadow: 0px 0px 10px white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  font-family: Helvetica, Sans-Serif;
+  font-weight: 600;
+}
+.round2 {
+  height: 20%;
+  width: 3rem;
+  z-index: 400;
+  border-radius: 2rem;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0px 0px 10px white;
+}
+.round3 {
+  height: 20%;
+  width: 3rem;
+  z-index: 400;
+  border-radius: 2rem;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0px 0px 10px white;
 }
 
 .hide-cart {
