@@ -15,6 +15,7 @@ const discountPercentage = document.querySelector(".discount-percentage");
 const gratisVape1 = document.querySelector(".gratisvape-1");
 const gratisVape2 = document.querySelector(".gratisvape-2");
 const menuCover = document.querySelector(".total-box-cover");
+const correctOrder = document.querySelector(".to-address");
 
 const trashCan1 = document.querySelector(".trash1");
 const trashCan2 = document.querySelector(".trash2");
@@ -195,6 +196,7 @@ couponSubmit.addEventListener("click", () => {
     couponInput.placeholder = "10% Korting!";
     couponSubmit.style.backgroundColor = "green";
     couponSubmit.style.color = "white";
+    correctOrder.classList.add("cart-finished");
   }
 });
 
@@ -439,6 +441,7 @@ hideCart.addEventListener("click", () => {
   menuCover.classList.add("hidden");
   cartContent.totalPrice = cartContent.totalCount * 9.95;
   discountPercentage.classList.add("hidden");
+  correctOrder.classList.remove("cart-finished");
 });
 
 const shoppingCartFlashing = (itemCount) => {
