@@ -1,6 +1,7 @@
 "use strict";
 
 const menuOptions = document.querySelector(".menu-options");
+const mainMenu = document.querySelector(".main-menu");
 const burgerMenu = document.querySelector(".menu");
 const shoppingCart = document.querySelector(".shopping-cart");
 const formAmount = document.querySelector(".amount-value");
@@ -18,6 +19,7 @@ const gratisVape2 = document.querySelector(".gratisvape-2");
 const freeVapeOption2 = document.querySelector("#freevape2");
 const menuCover = document.querySelector(".total-box-cover");
 const correctOrder = document.querySelector(".to-address");
+const couponLabel = document.querySelector(".coupon-label");
 
 const trashCan1 = document.querySelector(".trash1");
 const trashCan2 = document.querySelector(".trash2");
@@ -199,7 +201,6 @@ couponSubmit.addEventListener("click", () => {
     discountPercentage.classList.remove("hidden");
     totalPrice.textContent = cartContent.totalPrice;
     menuCover.classList.remove("hidden");
-    const couponLabel = document.querySelector(".coupon-label");
     couponLabel.style.color = "green";
     couponInput.placeholder = "10% Korting!";
     couponSubmit.style.backgroundColor = "green";
@@ -452,6 +453,24 @@ hideCart.addEventListener("click", () => {
   correctOrder.classList.remove("cart-finished");
   freeVapeOption1.value = "strawberryBanana";
   freeVapeOption2.value = "strawberryBanana";
+  couponLabel.style.color = "white";
+  couponInput.placeholder = " ";
+  couponSubmit.style.backgroundColor = "white";
+  couponSubmit.style.color = "black";
+});
+mainMenu.addEventListener("click", () => {
+  checkoutCart.style.display = "none";
+  someArray.pop();
+  menuCover.classList.add("hidden");
+  cartContent.totalPrice = cartContent.totalCount * 9.95;
+  discountPercentage.classList.add("hidden");
+  correctOrder.classList.remove("cart-finished");
+  freeVapeOption1.value = "strawberryBanana";
+  freeVapeOption2.value = "strawberryBanana";
+  couponLabel.style.color = "white";
+  couponInput.placeholder = " ";
+  couponSubmit.style.backgroundColor = "white";
+  couponSubmit.style.color = "black";
 });
 
 const shoppingCartFlashing = (itemCount) => {
