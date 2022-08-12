@@ -978,12 +978,16 @@ li {
   .header-text {
     left: 5vw;
     width: 90vw;
+    top: 15rem;
   }
   .header-title {
     font-size: 12vw;
   }
   .header-title2 {
     font-size: 5vw;
+  }
+  .cta-container {
+    top: 30rem;
   }
 }
 
