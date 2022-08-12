@@ -68,14 +68,6 @@
     </header>
     <main>
       <div class="main-menu">
-        <div class="progress-menu hidden">
-          <div class="round1"></div>
-          <div class="bar1"></div>
-          <div class="round2"></div>
-          <div class="bar2"></div>
-          <div class="round3"></div>
-        </div>
-
         <div class="form-textbox">
           <p class="form-text" id="formbox">Bang XXL Disposable 2000 Puffs</p>
           <p class="form-subtext">
@@ -426,6 +418,117 @@
         <button class="to-address">
           Bestelling Correct <i class="fa-solid fa-check-double"></i>
         </button>
+      </div>
+      <div class="customer-details hidden">
+        <button class="hide-cart2">X</button>
+        <h1 class="tnx4ordertxt1 hidden">Bedankt voor uw bestelling!</h1>
+        <h1 class="tnx4ordertxt2 hidden">Wij hebben uw gegevens ontvangen.<br>
+          Mocht alles in orde zijn, dan ontvangt u z.s.m. een betaalverzoek.         
+        </h1>
+        <img src="./img/Verzend Gegevens.png" class="verzend-gegevens" />
+        <form class="gegevens-div">
+          <div class="gegevens-box">
+            <label for="naam-input" class="naam-label">Naam*</label>
+            <div class="input-box">
+              <input
+              autocomplete="off"
+                type="input"
+                id="naam-input"
+                class="naam-input input-style"
+              />
+              <p class="naam-error error-styling hidden">Vul een naam in</p>
+            </div>
+          </div>
+          <div class="gegevens-box">
+            <label for="straat-input" class="straat-label">Straat*</label>
+            <div class="input-box">
+              <input
+              autocomplete="off"
+                type="input"
+                id="straat-input"
+                class="straat-input input-style"
+              />
+              <p class="straat-error error-styling hidden">Vul een straat in</p>
+            </div>
+          </div>
+          <div class="gegevens-box">
+            <label for="huisnummer-input" class="huisnummer-label"
+              >Huisnummer*</label
+            >
+            <div class="input-box">
+              <input
+              autocomplete="off"
+                type="input"
+                id="huisnummer-input"
+                class="huisnummer-input input-style"
+              />
+              <p class="huisnummer-error error-styling hidden">
+                Vul een geldig huisnummer in
+              </p>
+            </div>
+          </div>
+          <div class="gegevens-box">
+            <label for="postcode-input" class="postcode-label">Postcode*</label>
+            <div class="input-box">
+              <input
+              autocomplete="off"
+                type="input"
+                id="postcode-input"
+                class="postcode-input input-style"
+              />
+              <p class="postcode-error error-styling hidden">
+                Vul een geldige postcode in
+              </p>
+            </div>
+          </div>
+          <div class="gegevens-box">
+            <label for="plaats-input" class="plaats-label">Plaats*</label>
+            <div class="input-box">
+              <input
+              autocomplete="off"
+                type="input"
+                id="plaats-input"
+                class="plaats-input input-style"
+              />
+              <p class="plaats-error error-styling hidden">
+                Vul een geldige plaats in
+              </p>
+            </div>
+          </div>
+          <div class="gegevens-box">
+            <label for="email-input" class="email-label">E-Mail</label>
+            <div class="input-box">
+              <input
+              autocomplete="off"
+                type="email"
+                id="email-input"
+                class="email-input input-style"
+              />
+              <p class="email-error error-styling hidden">
+                Vul een geldig email adres in
+              </p>
+            </div>
+          </div>
+          <div class="gegevens-box">
+            <label for="mobiel-input" class="mobiel-label">Mobiel*</label>
+            <div class="input-box">
+              <input
+              autocomplete="off"
+                type="input"
+                id="mobiel-input"
+                class="mobiel-input input-style"
+                value="06-"
+              />
+              <p class="mobiel-error error-styling hidden">
+                Vul een geldig mobiel nummer in
+              </p>
+            </div>
+          </div>
+          <button class="to-shipping">
+            Gegevens Correct <i class="fa-solid fa-check-double"></i>
+          </button>
+        </div>
+      
       </div>
       <img src="./img/Copyright.png" class="copyright" />
     </main>

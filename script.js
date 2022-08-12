@@ -2,13 +2,14 @@
 
 const menuOptions = document.querySelector(".menu-options");
 const mainMenu = document.querySelector(".main-menu");
-const progressMenu = document.querySelector(".progress-menu");
 const burgerMenu = document.querySelector(".menu");
 const shoppingCart = document.querySelector(".shopping-cart");
 const formAmount = document.querySelector(".amount-value");
 const cartAmount = document.querySelector(".cart-count");
 const hideCart = document.querySelector(".hide-cart");
+const hideCart2 = document.querySelector(".hide-cart2");
 const checkoutCart = document.querySelector(".checkout-cart");
+const customerDetails = document.querySelector(".customer-details");
 const orderedItems = document.querySelector(".ordered-items");
 const totalPrice = document.querySelector(".total-order-price");
 const couponSubmit = document.querySelector(".coupon-submit");
@@ -21,6 +22,33 @@ const freeVapeOption2 = document.querySelector("#freevape2");
 const menuCover = document.querySelector(".total-box-cover");
 const correctOrder = document.querySelector(".to-address");
 const couponLabel = document.querySelector(".coupon-label");
+const finalText1 = document.querySelector(".tnx4ordertxt1");
+const finalText2 = document.querySelector(".tnx4ordertxt2");
+
+const naamInput = document.querySelector(".naam-input");
+const naamError = document.querySelector(".naam-error");
+const naamLabel = document.querySelector(".naam-label");
+const straatInput = document.querySelector(".straat-input");
+const straatError = document.querySelector(".straat-error");
+const straatLabel = document.querySelector(".straat-label");
+const huisnummerInput = document.querySelector(".huisnummer-input");
+const huisnummerError = document.querySelector(".huisnummer-error");
+const huisnummerLabel = document.querySelector(".huisnummer-label");
+const postcodeInput = document.querySelector(".postcode-input");
+const postcodeError = document.querySelector(".postcode-error");
+const postcodeLabel = document.querySelector(".postcode-label");
+const plaatsInput = document.querySelector(".plaats-input");
+const plaatsError = document.querySelector(".plaats-error");
+const plaatsLabel = document.querySelector(".plaats-label");
+const emailInput = document.querySelector(".email-input");
+const emailError = document.querySelector(".email-error");
+const emailLabel = document.querySelector(".email-label");
+const mobielInput = document.querySelector(".mobiel-input");
+const mobielError = document.querySelector(".mobiel-error");
+const mobielLabel = document.querySelector(".mobiel-label");
+const allInputs = document.querySelector(".gegevens-div");
+const verzendGegevens = document.querySelector(".verzend-gegevens");
+const toShipping = document.querySelector(".to-shipping");
 
 const trashCan1 = document.querySelector(".trash1");
 const trashCan2 = document.querySelector(".trash2");
@@ -129,6 +157,7 @@ const choice9Amount = document.querySelector(".choice9-amount");
 const choice10 = document.querySelector(".choice10");
 const choice10Title = document.querySelector(".choice10-title");
 const choice10Amount = document.querySelector(".choice10-amount");
+const gegevensBox = document.querySelector(".gegevens-box");
 
 //Init
 let cartInit = 0;
@@ -163,6 +192,15 @@ let cartContent = {
   freeVape1: "",
   freeVape2: "",
   discount: false,
+  customerDetails: {
+    naam: "",
+    straat: "",
+    huisnummer: "",
+    postcode: "",
+    plaats: "",
+    email: "",
+    mobiel: "",
+  },
   flavorAmounts: {
     strawberryBanana: 0,
     mixedBerry: 0,
@@ -179,11 +217,226 @@ let cartContent = {
 let finalOrder = cartContent.flavorAmounts;
 let totalOrder = cartContent.totalPrice;
 let totalCount = cartContent.totalCount;
+toShipping.innerHTML = `Gegevens Correct <i class="fa-solid fa-square-xmark"></i>`;
+toShipping.disabled = true;
+
+const shipToFirebase = () => {
+  fetch(
+    "https://snelle-vape-default-rtdb.europe-west1.firebasedatabase.app/Bestellingen.json",
+    {
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      method: "POST",
+      body: JSON.stringify(cartContent),
+    }
+  );
+};
+
+toShipping.addEventListener("click", (e) => {
+  e.preventDefault();
+  cartContent.customerDetails.naam = naamInput.value;
+  cartContent.customerDetails.straat = straatInput.value;
+  cartContent.customerDetails.huisnummer = huisnummerInput.value;
+  cartContent.customerDetails.postcode = postcodeInput.value;
+  cartContent.customerDetails.plaats = plaatsInput.value;
+  cartContent.customerDetails.email = emailInput.value;
+  cartContent.customerDetails.mobiel = mobielInput.value;
+  shipToFirebase();
+  naamInput.value = "";
+  straatInput.value = "";
+  huisnummerInput.value = "";
+  postcodeInput.value = "";
+  plaatsInput.value = "";
+  emailInput.value = "";
+  mobielInput.value = "06-";
+
+  allInputs.classList.add("hidden");
+  verzendGegevens.classList.add("hidden");
+  finalText1.classList.remove("hidden");
+  finalText2.classList.remove("hidden");
+
+  cartContent.totalCount = 0;
+  cartContent.totalPrice = 0;
+  cartContent.freeVape1 = "";
+  cartContent.freeVape2 = "";
+  cartContent.discount = false;
+  cartAmount.textContent = cartContent.totalCount;
+  cartContent.customerDetails.naam = "";
+  cartContent.customerDetails.straat = "";
+  cartContent.customerDetails.huisnummer = "";
+  cartContent.customerDetails.postcode = "";
+  cartContent.customerDetails.plaats = "";
+  cartContent.customerDetails.email = "";
+  cartContent.customerDetails.mobiel = "";
+
+  cartContent.flavorAmounts.strawberryBanana = 0;
+  cartContent.flavorAmounts.mixedBerry = 0;
+  cartContent.flavorAmounts.redRazPassionFruit = 0;
+  cartContent.flavorAmounts.gummyBear = 0;
+  cartContent.flavorAmounts.pineappleMango = 0;
+  cartContent.flavorAmounts.bubblegumIce = 0;
+  cartContent.flavorAmounts.strawberryIcecream = 0;
+  cartContent.flavorAmounts.orangeSoda = 0;
+  cartContent.flavorAmounts.colaIce = 0;
+  cartContent.flavorAmounts.honeydewMelon = 0;
+  choice1.classList.add("hidden");
+  choice2.classList.add("hidden");
+  choice3.classList.add("hidden");
+  choice4.classList.add("hidden");
+  choice5.classList.add("hidden");
+  choice6.classList.add("hidden");
+  choice7.classList.add("hidden");
+  choice8.classList.add("hidden");
+  choice9.classList.add("hidden");
+  choice10.classList.add("hidden");
+  toShipping.disabled = true;
+  naamInput.style.border = "2px solid black";
+  naamLabel.style.color = "black";
+  straatInput.style.border = "2px solid black";
+  straatLabel.style.color = "black";
+  huisnummerInput.style.border = "2px solid black";
+  huisnummerLabel.style.color = "black";
+  postcodeInput.style.border = "2px solid black";
+  postcodeLabel.style.color = "black";
+  plaatsInput.style.border = "2px solid black";
+  plaatsLabel.style.color = "black";
+  emailInput.style.border = "2px solid black";
+  emailLabel.style.color = "black";
+  mobielInput.style.border = "2px solid black";
+  mobielLabel.style.color = "black";
+  toShipping.innerHTML = `Gegevens Correct <i class="fa-solid fa-square-xmark"></i>`;
+});
+
+document.addEventListener("keyup", () => {
+  if (naamInput.value.length < 3) {
+    naamError.classList.remove("hidden");
+    toShipping.innerHTML = `Gegevens Correct <i class="fa-solid fa-square-xmark"></i>`;
+    toShipping.disabled = true;
+    naamInput.style.border = "2px solid black";
+    naamLabel.style.color = "black";
+    return;
+  }
+  if (naamInput.value.length >= 3) {
+    naamError.classList.add("hidden");
+    naamInput.style.border = "2px solid green";
+    naamLabel.style.color = "green";
+  }
+
+  if (straatInput.value.length < 4) {
+    straatError.classList.remove("hidden");
+    toShipping.innerHTML = `Gegevens Correct <i class="fa-solid fa-square-xmark"></i>`;
+    toShipping.disabled = true;
+    straatInput.style.border = "2px solid black";
+    straatLabel.style.color = "black";
+    return;
+  }
+
+  if (straatInput.value.length >= 4) {
+    straatError.classList.add("hidden");
+    straatInput.style.border = "2px solid green";
+    straatLabel.style.color = "green";
+  }
+
+  if (huisnummerInput.value.length < 1) {
+    huisnummerError.classList.remove("hidden");
+    toShipping.innerHTML = `Gegevens Correct <i class="fa-solid fa-square-xmark"></i>`;
+    toShipping.disabled = true;
+    huisnummerInput.style.border = "2px solid black";
+    huisnummerLabel.style.color = "black";
+    return;
+  }
+
+  if (huisnummerInput.value.length >= 1) {
+    huisnummerError.classList.add("hidden");
+    huisnummerInput.style.border = "2px solid green";
+    huisnummerLabel.style.color = "green";
+  }
+
+  if (postcodeInput.value.length < 6) {
+    postcodeError.classList.remove("hidden");
+    toShipping.innerHTML = `Gegevens Correct <i class="fa-solid fa-square-xmark"></i>`;
+    toShipping.disabled = true;
+    postcodeInput.style.border = "2px solid black";
+    postcodeLabel.style.color = "black";
+    return;
+  }
+
+  if (postcodeInput.value.length === 6) {
+    postcodeError.classList.add("hidden");
+    postcodeInput.style.border = "2px solid green";
+    postcodeLabel.style.color = "green";
+  }
+
+  if (postcodeInput.value.length > 6) {
+    postcodeError.classList.remove("hidden");
+    toShipping.innerHTML = `Gegevens Correct <i class="fa-solid fa-square-xmark"></i>`;
+    toShipping.disabled = true;
+    return;
+  }
+  if (plaatsInput.value.length < 3) {
+    plaatsError.classList.remove("hidden");
+    toShipping.innerHTML = `Gegevens Correct <i class="fa-solid fa-square-xmark"></i>`;
+    toShipping.disabled = true;
+    plaatsInput.style.border = "2px solid black";
+    plaatsLabel.style.color = "black";
+    return;
+  }
+
+  if (plaatsInput.value.length >= 3) {
+    plaatsError.classList.add("hidden");
+    plaatsInput.style.border = "2px solid green";
+    plaatsLabel.style.color = "green";
+  }
+
+  if (emailInput.value.length <= 6) {
+    emailError.classList.remove("hidden");
+    toShipping.innerHTML = `Gegevens Correct <i class="fa-solid fa-square-xmark"></i>`;
+    toShipping.disabled = true;
+    emailInput.style.border = "2px solid black";
+    emailLabel.style.color = "black";
+    return;
+  }
+  if (!emailInput.value.includes("@")) {
+    emailError.classList.remove("hidden");
+    toShipping.innerHTML = `Gegevens Correct <i class="fa-solid fa-square-xmark"></i>`;
+    toShipping.disabled = true;
+    emailInput.style.border = "2px solid black";
+    emailLabel.style.color = "black";
+    return;
+  }
+
+  if (emailInput.value.length >= 5) {
+    emailError.classList.add("hidden");
+    emailInput.style.border = "2px solid green";
+    emailLabel.style.color = "green";
+  }
+
+  if (mobielInput.value.length < 10) {
+    mobielError.classList.remove("hidden");
+    toShipping.innerHTML = `Gegevens Correct <i class="fa-solid fa-square-xmark"></i>`;
+    toShipping.disabled = true;
+    mobielInput.style.border = "2px solid black";
+    mobielLabel.style.color = "black";
+    return;
+  }
+  if (mobielInput.value.length > 10) {
+    mobielError.classList.add("hidden");
+    mobielInput.style.border = "2px solid green";
+    mobielLabel.style.color = "green";
+    toShipping.disabled = false;
+    toShipping.innerHTML = `Gegevens Correct <i class="fa-solid fa-check-double"></i>`;
+    toShipping.style.cursor = "pointer";
+  }
+});
 
 correctOrder.addEventListener("click", () => {
+  if (cartContent.totalCount === 0) return;
   cartContent.freeVape1 = freeVapeOption1.value;
   cartContent.freeVape2 = freeVapeOption2.value;
   console.log(cartContent);
+  customerDetails.classList.remove("hidden");
 });
 
 couponSubmit.addEventListener("click", () => {
@@ -371,7 +624,6 @@ trashCan10.addEventListener("click", () => {
 });
 
 const cartRendering = () => {
-  progressMenu.classList.remove("hidden");
   freeVapeHandler();
   totalPrice.textContent = cartContent.totalPrice.toFixed(2);
 
@@ -446,6 +698,36 @@ shoppingCart.addEventListener("click", () => {
 });
 
 //Hide cart
+
+document.onkeydown = function (e) {
+  if (e.key === "Escape") {
+    checkoutCart.style.display = "none";
+  }
+};
+
+hideCart2.addEventListener("click", () => {
+  customerDetails.classList.add("hidden");
+  checkoutCart.style.display = "none";
+  if (someArray.length === 2) {
+    someArray.pop();
+  }
+  menuCover.classList.add("hidden");
+  cartContent.totalPrice = cartContent.totalCount * 9.95;
+  discountPercentage.classList.add("hidden");
+  correctOrder.classList.remove("cart-finished");
+  freeVapeOption1.value = "strawberryBanana";
+  freeVapeOption2.value = "strawberryBanana";
+  couponLabel.style.color = "white";
+  couponInput.placeholder = " ";
+  couponSubmit.style.backgroundColor = "white";
+  couponSubmit.style.color = "black";
+  cartContent.discount = false;
+  allInputs.classList.remove("hidden");
+  verzendGegevens.classList.remove("hidden");
+  finalText1.classList.add("hidden");
+  finalText2.classList.add("hidden");
+});
+
 hideCart.addEventListener("click", () => {
   checkoutCart.style.display = "none";
   if (someArray.length === 2) {
@@ -462,9 +744,13 @@ hideCart.addEventListener("click", () => {
   couponSubmit.style.backgroundColor = "white";
   couponSubmit.style.color = "black";
   cartContent.discount = false;
-  progressMenu.classList.add("hidden");
+  allInputs.classList.remove("hidden");
+  verzendGegevens.classList.remove("hidden");
+  finalText1.classList.add("hidden");
+  finalText2.classList.add("hidden");
 });
 mainMenu.addEventListener("click", () => {
+  customerDetails.classList.add("hidden");
   checkoutCart.style.display = "none";
   if (someArray.length === 2) {
     someArray.pop();
@@ -480,7 +766,6 @@ mainMenu.addEventListener("click", () => {
   couponSubmit.style.backgroundColor = "white";
   couponSubmit.style.color = "black";
   cartContent.discount = false;
-  progressMenu.classList.add("hidden");
 });
 
 const shoppingCartFlashing = (itemCount) => {
