@@ -265,7 +265,7 @@ submitContactForm.addEventListener("click", (e) => {
         "Content-Type": "application/json",
       },
       method: "POST",
-      body: JSON.stringify(contactForm.bericht),
+      body: JSON.stringify(contactForm),
     }
   );
   emailFormInput.value = "";
