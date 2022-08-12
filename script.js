@@ -24,6 +24,13 @@ const correctOrder = document.querySelector(".to-address");
 const couponLabel = document.querySelector(".coupon-label");
 const finalText1 = document.querySelector(".tnx4ordertxt1");
 const finalText2 = document.querySelector(".tnx4ordertxt2");
+const closeContactForm = document.querySelector(".hide-contact-form");
+const contactPage = document.querySelector(".contact-page");
+const openContactPage = document.querySelector(".contact");
+const contactText = document.querySelector(".contact-text");
+const contactImage = document.querySelector(".contact2");
+const formEmailInput = document.querySelector(".form-email");
+const formBox2 = document.querySelector(".form-box2");
 
 const naamInput = document.querySelector(".naam-input");
 const naamError = document.querySelector(".naam-error");
@@ -49,6 +56,12 @@ const mobielLabel = document.querySelector(".mobiel-label");
 const allInputs = document.querySelector(".gegevens-div");
 const verzendGegevens = document.querySelector(".verzend-gegevens");
 const toShipping = document.querySelector(".to-shipping");
+const textAreaContactForm = document.querySelector(".contact-textarea");
+const submitContactForm = document.querySelector(".submit-contact-form");
+const emailFormInput = document.querySelector(".form-email-input");
+const formEndText = document.querySelector(".form-endtext");
+const emailLabel2 = document.querySelector(".email-label2");
+const versturenImg = document.querySelector(".versturen-img");
 
 const trashCan1 = document.querySelector(".trash1");
 const trashCan2 = document.querySelector(".trash2");
@@ -186,6 +199,10 @@ checkoutCart.style.display = "none";
 let coupString = "snelle10";
 let someArray = [0];
 
+let contactForm = {
+  bericht: "",
+  email: "",
+};
 let cartContent = {
   totalCount: 0,
   totalPrice: 0,
@@ -219,6 +236,48 @@ let totalOrder = cartContent.totalPrice;
 let totalCount = cartContent.totalCount;
 toShipping.innerHTML = `Gegevens Correct <i class="fa-solid fa-square-xmark"></i>`;
 toShipping.disabled = true;
+
+openContactPage.addEventListener("click", () => {
+  contactPage.classList.remove("hidden");
+  formEndText.classList.add("hidden");
+  emailFormInput.classList.remove("hidden");
+  contactImage.classList.remove("hidden");
+  emailLabel2.classList.remove("hidden");
+  formBox2.classList.remove("hidden");
+  submitContactForm.classList.remove("hidden");
+  contactText.classList.remove("hidden");
+});
+
+closeContactForm.addEventListener("click", () => {
+  contactPage.classList.add("hidden");
+});
+
+submitContactForm.addEventListener("click", (e) => {
+  e.preventDefault();
+  if (textAreaContactForm.value.length < 3) return;
+  contactForm.bericht = textAreaContactForm.value;
+  contactForm.email = emailFormInput.value;
+  fetch(
+    "https://snelle-vape-default-rtdb.europe-west1.firebasedatabase.app/ContactFormulier.json",
+    {
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      method: "POST",
+      body: JSON.stringify(contactForm.bericht),
+    }
+  );
+  emailFormInput.value = "";
+  textAreaContactForm.value = "";
+  formEndText.classList.remove("hidden");
+  emailFormInput.classList.add("hidden");
+  contactImage.classList.add("hidden");
+  emailLabel2.classList.add("hidden");
+  formBox2.classList.add("hidden");
+  submitContactForm.classList.add("hidden");
+  contactText.classList.add("hidden");
+});
 
 const shipToFirebase = () => {
   fetch(
