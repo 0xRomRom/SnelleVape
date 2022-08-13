@@ -140,6 +140,22 @@ const increaseCart8 = document.querySelector(".increment8");
 const increaseCart9 = document.querySelector(".increment9");
 const increaseCart10 = document.querySelector(".increment10");
 
+// const findOverflows = () => {
+//   const documentWidth = document.documentElement.offsetWidth;
+
+//   document.querySelectorAll("*").forEach((element) => {
+//     const box = element.getBoundingClientRect();
+
+//     if (box.left < 0 || box.right > documentWidth) {
+//       console.log(element);
+//       element.style.border = "1px solid red";
+//     }
+//   });
+// };
+
+// // Execute findOverflows to find overflows on the page.
+// findOverflows();
+
 const choice1 = document.querySelector(".choice1");
 const choice1Title = document.querySelector(".choice1-title");
 const choice1Amount = document.querySelector(".choice1-amount");
