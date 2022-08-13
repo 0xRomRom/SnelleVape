@@ -39,7 +39,6 @@ canvas {
   position: fixed;
   width: 100vw;
   height: 3rem;
-  margin-top: 0.5rem;
   background-color: black;
   display: flex;
   justify-content: space-between;
@@ -429,7 +428,6 @@ li {
   height: 7rem;
   background: rgb(167, 128, 160);
   min-width: 98%;
-  left: -0.3rem;
   border-radius: 0.3rem;
   gap: 1rem;
   display: flex;
@@ -577,7 +575,7 @@ li {
 
 .total-box {
   position: relative;
-  width: 25vw;
+  width: 40rem;
   height: 30rem;
   background-color: rgb(200, 192, 192);
   border-radius: 0.3rem;
@@ -586,6 +584,8 @@ li {
   align-items: center;
   flex-direction: column;
   padding-top: 1rem;
+  overflow: scroll;
+  overflow-x: hidden;
 }
 
 .total-box-cover {
@@ -655,6 +655,18 @@ li {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.gratisvape-1 {
+  min-height: 3rem;
+  margin-top: 0.1rem;
+  margin-bottom: 0.1rem;
+}
+
+.gratisvape-2 {
+  min-height: 3rem;
+  margin-top: 0.2rem;
+  margin-bottom: 0.3rem;
 }
 
 .minus-styling {
@@ -1015,6 +1027,13 @@ li {
   .snelle-vape-img {
     margin-left: 2rem;
   }
+  .hide-cart {
+    left: 92%;
+  }
+  .checkout-cart {
+    width: 85vw;
+    left: 7.5vw;
+  }
 }
 
 @media only screen and (max-width: 1200px) {
@@ -1054,6 +1073,18 @@ li {
   }
   .form-title {
     font-size: 1.2rem;
+  }
+  .checkout-cart {
+    width: 95vw;
+    left: 2.5vw;
+    top: 4rem;
+    height: 93vh;
+  }
+}
+
+@media only screen and (max-width: 750px) {
+  .total-box {
+    width: 95%;
   }
 }
 
@@ -1176,7 +1207,7 @@ li {
   }
   .amount-class {
     top: 35%;
-    left: -0.2rem;
+    left: -0.1rem;
     height: 40%;
     width: 110%;
   }
@@ -1185,12 +1216,20 @@ li {
   }
   .flex-options {
     margin-left: 2rem;
+    flex-direction: column-reverse;
   }
   .nav-section {
     background-color: black;
   }
   .discount-text {
     font-size: 4.3vw;
+  }
+  .copyright-flex {
+    top: 119rem;
+  }
+  .hide-cart {
+    top: 0.5rem;
+    left: 90%;
   }
 }
 
@@ -1200,12 +1239,22 @@ li {
   }
   .fa-cart-plus {
     left: -2rem;
+    padding: 0.2rem;
   }
   .form-text {
     font-size: 6vw !important;
   }
   .form-subtext {
     font-size: 4vw;
+  }
+  .hide-cart {
+    left: 87%;
+  }
+  .choice3-title {
+    font-size: 1rem;
+  }
+  .choice7-title {
+    font-size: 1rem;
   }
 }
 
@@ -1228,6 +1277,40 @@ li {
   .burger-button {
     left: -0.5rem;
     height: 80%;
+  }
+  .fa-cart-plus {
+    font-size: 2.8rem;
+    width: 5rem;
+    height: 3.5rem;
+    text-align: center;
+    border-radius: 0.3rem;
+    margin-right: 1rem;
+    padding-top: 0.5rem;
+  }
+  .winkelwagen {
+    height: 3rem;
+    margin-bottom: 1rem;
+  }
+  .coupon-label {
+    font-size: 1.1rem;
+  }
+  .total-order {
+    font-size: 8vw;
+  }
+  .total-order-price {
+    font-size: 8vw;
+  }
+  .choice-title {
+    font-size: 1.1rem;
+  }
+  .choice-styling {
+    gap: 0rem !important;
+  }
+  .cart-text {
+    gap: 0.2rem !important;
+  }
+  .choice-amount-styling {
+    font-size: 1rem;
   }
 }
 
@@ -1253,5 +1336,14 @@ li {
   }
   .flavor-positioning {
     gap: 0.5rem;
+  }
+  .coupon-input {
+    width: 40%;
+  }
+  .kiesvape1 {
+    font-size: 1vw;
+  }
+  .font-decreaser {
+    font-size: 0.8rem;
   }
 }
