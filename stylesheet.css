@@ -1077,8 +1077,8 @@ li {
   .checkout-cart {
     width: 95vw;
     left: 2.5vw;
-    top: 4rem;
-    height: 93vh;
+    top: 3.25rem;
+    height: 92vh;
   }
 }
 
@@ -1295,7 +1295,7 @@ li {
     font-size: 1.1rem;
   }
   .total-order {
-    font-size: 8vw;
+    font-size: 7.5vw;
   }
   .total-order-price {
     font-size: 8vw;
