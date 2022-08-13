@@ -1312,6 +1312,10 @@ li {
   .choice-amount-styling {
     font-size: 1rem;
   }
+  .checkout-cart {
+    gap: 0.4rem;
+    height: 93%;
+  }
 }
 
 @media only screen and (max-width: 400px) {
