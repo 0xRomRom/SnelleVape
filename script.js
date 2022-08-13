@@ -19,6 +19,7 @@ const gratisVape1 = document.querySelector(".gratisvape-1");
 const freeVapeOption1 = document.querySelector("#freevape1");
 const gratisVape2 = document.querySelector(".gratisvape-2");
 const freeVapeOption2 = document.querySelector("#freevape2");
+const totalBox = document.querySelector(".total-box");
 const menuCover = document.querySelector(".total-box-cover");
 const correctOrder = document.querySelector(".to-address");
 const couponLabel = document.querySelector(".coupon-label");
@@ -538,6 +539,7 @@ couponSubmit.addEventListener("click", () => {
     couponSubmit.style.backgroundColor = "green";
     couponSubmit.style.color = "white";
     correctOrder.classList.add("cart-finished");
+    totalBox.style.border = "5px solid green";
     cartContent.discount = true;
   }
 });
@@ -827,6 +829,7 @@ hideCart.addEventListener("click", () => {
   verzendGegevens.classList.remove("hidden");
   finalText1.classList.add("hidden");
   finalText2.classList.add("hidden");
+  totalBox.style.border = "none";
 });
 mainMenu.addEventListener("click", () => {
   customerDetails.classList.add("hidden");
@@ -845,6 +848,7 @@ mainMenu.addEventListener("click", () => {
   couponSubmit.style.backgroundColor = "white";
   couponSubmit.style.color = "black";
   cartContent.discount = false;
+  totalBox.style.border = "none";
 });
 
 const shoppingCartFlashing = (itemCount) => {
