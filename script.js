@@ -32,6 +32,7 @@ const contactText = document.querySelector(".contact-text");
 const contactImage = document.querySelector(".contact2");
 const formEmailInput = document.querySelector(".form-email");
 const formBox2 = document.querySelector(".form-box2");
+const navBar = document.querySelector(".nav-section");
 
 const naamInput = document.querySelector(".naam-input");
 const naamError = document.querySelector(".naam-error");
@@ -311,6 +312,18 @@ const shipToFirebase = () => {
   );
 };
 
+toShipping.addEventListener("mouseover", () => {
+  if (toShipping.disabled) return;
+  toShipping.style.backgroundColor = "rgb(144, 221, 161)";
+  toShipping.style.cursor = "pointer";
+});
+
+toShipping.addEventListener("mouseleave", () => {
+  if (toShipping.disabled) return;
+  toShipping.style.backgroundColor = "rgb(240,240,240)";
+  toShipping.style.cursor = "initial";
+});
+
 toShipping.addEventListener("click", (e) => {
   e.preventDefault();
   cartContent.customerDetails.naam = naamInput.value;
@@ -384,6 +397,8 @@ toShipping.addEventListener("click", (e) => {
   mobielInput.style.border = "2px solid black";
   mobielLabel.style.color = "black";
   toShipping.innerHTML = `Gegevens Correct <i class="fa-solid fa-square-xmark"></i>`;
+  toShipping.style.backgroundColor = "rgb(240,240,240)";
+  toShipping.style.cursor = "initial";
 });
 
 document.addEventListener("keyup", () => {
@@ -768,6 +783,8 @@ burgerMenu.addEventListener("click", () => {
     menuOptions.style.display != "flex" ? "flex" : "none";
   shoppingCart.style.display =
     shoppingCart.style.display != "none" ? "none" : "flex";
+  navBar.style.backgroundColor =
+    navBar.style.backgroundColor != "transparent" ? "transparent" : "black";
 });
 
 //Show Cart
