@@ -117,6 +117,8 @@ li {
   color: white;
   font-family: Helvetica, Sans-Serif;
   font-weight: 600;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 @keyframes quickFlash {
@@ -589,10 +591,10 @@ li {
 }
 
 .total-box-cover {
-  position: absolute;
-  width: 25vw;
-  height: 100%;
-  top: 0rem;
+  position: fixed;
+  width: 40rem;
+  height: 30rem;
+  top: 14.7rem;
   background-color: transparent;
   border-radius: 0.3rem;
   display: flex;
@@ -600,7 +602,6 @@ li {
   align-items: center;
   flex-direction: column;
   z-index: 300;
-  border: 5px solid green;
 }
 
 .choice-styling {
@@ -896,7 +897,7 @@ li {
   border: transparent;
   padding: 0.5rem;
   position: absolute;
-  left: 95%;
+  left: 93%;
   top: 2%;
   border-radius: 0.2rem;
   cursor: pointer;
@@ -909,11 +910,11 @@ li {
   font-size: 1.5rem;
   color: white;
   text-align: center;
-  max-width: 70%;
+  width: 70%;
 }
 
 .form-box2 {
-  width: 35vw;
+  min-width: 50%;
   height: 20rem;
   background: rgb(124, 116, 124);
   box-shadow: 0px 0px 12px rgb(191, 28, 169);
@@ -926,7 +927,7 @@ li {
 }
 
 .contact-textarea {
-  max-width: 98%;
+  width: 98%;
   min-height: 97%;
   resize: none;
   border-radius: 0.3rem;
@@ -1014,6 +1015,12 @@ li {
   }
 }
 
+@media only screen and (max-width: 1700px) {
+  .gegevens-div {
+    width: 75%;
+  }
+}
+
 @media only screen and (max-width: 1500px) {
   .form-title-xtra {
     font-size: 1.6rem;
@@ -1031,6 +1038,14 @@ li {
     left: 92%;
   }
   .checkout-cart {
+    width: 85vw;
+    left: 7.5vw;
+  }
+  .customer-details {
+    width: 85vw;
+    left: 7.5vw;
+  }
+  .contact-page {
     width: 85vw;
     left: 7.5vw;
   }
@@ -1075,15 +1090,58 @@ li {
     font-size: 1.2rem;
   }
   .checkout-cart {
-    width: 95vw;
-    left: 2.5vw;
-    top: 3.25rem;
-    height: 92vh;
+    width: 100vw;
+    left: 0vw;
+    top: 3.5rem;
+    height: 97vh;
+  }
+  .contact-page {
+    width: 100vw;
+    left: 0vw;
+    top: 3.5rem;
+    height: 97vh;
+  }
+  .customer-details {
+    width: 100vw;
+    left: 0vw;
+    top: 3.5rem;
+    height: 97vh;
+  }
+  .hide-cart2 {
+    left: 92%;
+  }
+  .total-box-cover {
+    top: 13.6rem;
+  }
+  .contact-page {
+    width: 100vw;
+    left: 0vw;
+  }
+  .email-label2 {
+    font-size: 1.2rem;
+  }
+  .versturen-img {
+    height: 2rem;
+  }
+  .nav-section {
+    background-color: black;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .form-box2 {
+    width: 80vw;
+  }
+  .contact-text {
+    font-size: 1rem;
   }
 }
 
 @media only screen and (max-width: 750px) {
   .total-box {
+    width: 95%;
+  }
+  .total-box-cover {
     width: 95%;
   }
 }
@@ -1167,9 +1225,21 @@ li {
     height: 3rem;
     text-align: center;
     border-radius: 0.3rem;
-
-    /* padding-top: 0.2rem; */
     box-shadow: 0px 0px 5px black;
+  }
+  .hide-cart2 {
+    left: 90%;
+  }
+  .verzend-gegevens {
+    height: 3.5rem;
+    margin-top: -5rem;
+    margin-bottom: 5rem;
+  }
+  .gegevens-div {
+    width: 90%;
+  }
+  .hide-contact-form {
+    left: 89%;
   }
 }
 
@@ -1218,9 +1288,6 @@ li {
     margin-left: 2rem;
     flex-direction: column-reverse;
   }
-  .nav-section {
-    background-color: black;
-  }
   .discount-text {
     font-size: 4.3vw;
   }
@@ -1230,6 +1297,15 @@ li {
   .hide-cart {
     top: 0.5rem;
     left: 90%;
+  }
+  .verzend-gegevens {
+    height: 3rem;
+  }
+  .tnx4ordertxt1 {
+    font-size: 6vw;
+  }
+  .tnx4ordertxt2 {
+    font-size: 4vw;
   }
 }
 
@@ -1255,6 +1331,30 @@ li {
   }
   .choice7-title {
     font-size: 1rem;
+  }
+  .total-order {
+    font-size: 5.8vw;
+  }
+  .total-order-price {
+    font-size: 5.8vw;
+  }
+  .discount-percentage {
+    font-size: 5.8vw;
+  }
+  .to-shipping {
+    font-size: 1.5rem;
+  }
+  .input-labels {
+    font-size: 1.2rem;
+  }
+  .email-label2 {
+    font-size: 1rem;
+  }
+  .contact-text {
+    width: 85%;
+  }
+  .hide-contact-form {
+    left: 87%;
   }
 }
 
@@ -1288,17 +1388,20 @@ li {
     padding-top: 0.5rem;
   }
   .winkelwagen {
-    height: 3rem;
+    height: 2.75rem;
     margin-bottom: 1rem;
   }
   .coupon-label {
     font-size: 1.1rem;
   }
   .total-order {
-    font-size: 7.5vw;
+    font-size: 5.8vw;
   }
   .total-order-price {
-    font-size: 8vw;
+    font-size: 5.8vw;
+  }
+  .discount-percentage {
+    font-size: 5.8vw;
   }
   .choice-title {
     font-size: 1.1rem;
@@ -1315,6 +1418,28 @@ li {
   .checkout-cart {
     gap: 0.4rem;
     height: 93%;
+  }
+  .total-box-cover {
+    top: 12.2rem;
+  }
+  .total-box {
+    border: 5px solid green;
+  }
+  .input-style {
+    position: relative;
+    width: 70%;
+    left: 20%;
+  }
+  .verzend-gegevens {
+    height: 2.75rem;
+  }
+
+  .hide-cart2 {
+    left: 87%;
+  }
+  .error-styling {
+    font-size: 0.8rem;
+    text-align: center;
   }
 }
 
@@ -1349,5 +1474,16 @@ li {
   }
   .font-decreaser {
     font-size: 0.8rem;
+  }
+  .input-style {
+    position: relative;
+    width: 8rem;
+    left: 10%;
+  }
+  .verzend-gegevens {
+    height: 2.5rem;
+  }
+  .form-box2 {
+    width: 90%;
   }
 }

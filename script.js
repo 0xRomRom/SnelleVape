@@ -271,6 +271,7 @@ closeContactForm.addEventListener("click", () => {
 submitContactForm.addEventListener("click", (e) => {
   e.preventDefault();
   if (textAreaContactForm.value.length < 3) return;
+  if (emailFormInput.value.value.length < 3) return;
   contactForm.bericht = textAreaContactForm.value;
   contactForm.email = emailFormInput.value;
   fetch(
@@ -512,6 +513,7 @@ correctOrder.addEventListener("click", () => {
   cartContent.freeVape2 = freeVapeOption2.value;
   console.log(cartContent);
   customerDetails.classList.remove("hidden");
+  checkoutCart.classList.add("hidden");
 });
 
 couponSubmit.addEventListener("click", () => {
@@ -770,6 +772,8 @@ burgerMenu.addEventListener("click", () => {
 shoppingCart.addEventListener("click", () => {
   checkoutCart.style.display = "flex";
   cartRendering();
+  customerDetails.classList.add("hidden");
+  checkoutCart.classList.remove("hidden");
 });
 
 //Hide cart
