@@ -326,7 +326,7 @@ li {
     rgb(0, 0, 0),
     rgb(145, 11, 127)
   );
-  border-top: 1px solid white;
+  /* border-top: 1px solid white; */
 }
 
 .item-flex {
@@ -1176,12 +1176,36 @@ li {
   }
   .amount-class {
     top: 35%;
-    left: -0.3rem;
+    left: -0.2rem;
     height: 40%;
-    width: 120%;
+    width: 110%;
   }
   .form-subtext {
     font-size: 1.1rem;
+  }
+  .flex-options {
+    margin-left: 2rem;
+  }
+  .nav-section {
+    background-color: black;
+  }
+  .discount-text {
+    font-size: 4.3vw;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .flex-options {
+    margin-left: 1rem;
+  }
+  .fa-cart-plus {
+    left: -2rem;
+  }
+  .form-text {
+    font-size: 6vw !important;
+  }
+  .form-subtext {
+    font-size: 4vw;
   }
 }
 
@@ -1223,5 +1247,11 @@ li {
   }
   .burger-button {
     left: -2rem;
+  }
+  .fa-cart-plus {
+    left: -2.5rem;
+  }
+  .flavor-positioning {
+    gap: 0.5rem;
   }
 }
