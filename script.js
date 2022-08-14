@@ -1,6 +1,7 @@
 "use strict";
 
 const menuOptions = document.querySelector(".menu-options");
+const contactBurger = document.querySelector(".menu-contact");
 const mainMenu = document.querySelector(".main-menu");
 const burgerMenu = document.querySelector(".menu");
 const shoppingCart = document.querySelector(".shopping-cart");
@@ -142,22 +143,6 @@ const increaseCart8 = document.querySelector(".increment8");
 const increaseCart9 = document.querySelector(".increment9");
 const increaseCart10 = document.querySelector(".increment10");
 
-// const findOverflows = () => {
-//   const documentWidth = document.documentElement.offsetWidth;
-
-//   document.querySelectorAll("*").forEach((element) => {
-//     const box = element.getBoundingClientRect();
-
-//     if (box.left < 0 || box.right > documentWidth) {
-//       console.log(element);
-//       element.style.border = "1px solid red";
-//     }
-//   });
-// };
-
-// // Execute findOverflows to find overflows on the page.
-// findOverflows();
-
 const choice1 = document.querySelector(".choice1");
 const choice1Title = document.querySelector(".choice1-title");
 const choice1Amount = document.querySelector(".choice1-amount");
@@ -255,6 +240,24 @@ let totalCount = cartContent.totalCount;
 toShipping.innerHTML = `Gegevens Correct <i class="fa-solid fa-square-xmark"></i>`;
 toShipping.disabled = true;
 
+burgerMenu.addEventListener("click", () => {
+  menuOptions.classList.remove("hidden");
+  menuOptions.style.display =
+    menuOptions.style.display != "flex" ? "flex" : "none";
+  shoppingCart.style.display =
+    shoppingCart.style.display != "none" ? "none" : "flex";
+  navBar.style.backgroundColor =
+    navBar.style.backgroundColor != "transparent" ? "transparent" : "black";
+});
+
+contactBurger.addEventListener("click", () => {
+  contactPage.classList.remove("hidden");
+  menuOptions.classList.add("hidden");
+  burgerMenu.classList.remove("opened");
+  formEndText.classList.add("hidden");
+  navBar.style.backgroundColor = "black";
+});
+
 openContactPage.addEventListener("click", () => {
   contactPage.classList.remove("hidden");
   formEndText.classList.add("hidden");
@@ -266,14 +269,18 @@ openContactPage.addEventListener("click", () => {
   contactText.classList.remove("hidden");
 });
 
-closeContactForm.addEventListener("click", () => {
+closeContactForm.addEventListener("click", (e) => {
+  e.preventDefault();
   contactPage.classList.add("hidden");
+  shoppingCart.style.display = "flex";
+  menuOptions.style.display = "none";
+  // navBar.style.backgroundColor = "transparent";
 });
 
 submitContactForm.addEventListener("click", (e) => {
   e.preventDefault();
   if (textAreaContactForm.value.length < 3) return;
-  if (emailFormInput.value.value.length < 3) return;
+  if (emailFormInput.value.length < 3) return;
   contactForm.bericht = textAreaContactForm.value;
   contactForm.email = emailFormInput.value;
   fetch(
@@ -776,16 +783,6 @@ const cartRendering = () => {
     }
   }
 };
-
-// Burger menu
-burgerMenu.addEventListener("click", () => {
-  menuOptions.style.display =
-    menuOptions.style.display != "flex" ? "flex" : "none";
-  shoppingCart.style.display =
-    shoppingCart.style.display != "none" ? "none" : "flex";
-  navBar.style.backgroundColor =
-    navBar.style.backgroundColor != "transparent" ? "transparent" : "black";
-});
 
 //Show Cart
 shoppingCart.addEventListener("click", () => {

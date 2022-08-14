@@ -831,7 +831,7 @@ li {
 .gegevens-div {
   position: relative;
   width: 25vw;
-  height: 30rem;
+  height: 35rem;
   background-color: rgb(200, 192, 192);
   border-radius: 0.3rem;
   display: flex;
@@ -1066,6 +1066,12 @@ li {
     width: 85vw;
     left: 7.5vw;
   }
+  .form-text {
+    font-size: 4vw;
+  }
+  .form-subtext {
+    font-size: 2vw;
+  }
 }
 
 @media only screen and (max-width: 1200px) {
@@ -1142,6 +1148,12 @@ li {
   }
   .nav-section {
     background-color: black;
+  }
+  .form-text {
+    font-size: 5.4vw;
+  }
+  .form-subtext {
+    font-size: 3vw;
   }
 }
 
@@ -1254,6 +1266,7 @@ li {
     margin-bottom: 5rem;
   }
   .gegevens-div {
+    top: -3rem;
     width: 90%;
   }
   .hide-contact-form {
@@ -1270,33 +1283,36 @@ li {
     margin-top: 89rem;
   }
   .form-title {
-    font-size: 1rem;
+    position: absolute;
+    top: 5%;
+    left: 30%;
+    width: 100%;
+    font-size: 1.5rem;
   }
   .flex-options {
-    /* padding-bottom: 7rem; */
-    margin-bottom: 5rem;
-    flex-direction: column;
+    flex-direction: row !important;
   }
   .form-img {
     top: 25%;
     height: 50%;
   }
   .fa-cart-plus {
-    margin-top: 1.5rem;
-    margin-left: 3rem;
+    top: 42.5%;
   }
   .inc-button {
-    top: 35%;
-    height: 40%;
+    top: 40%;
+    height: 30%;
+    width: 5rem;
   }
   .dec-button {
-    top: 35%;
-    height: 40%;
+    top: 40%;
+    height: 30%;
+    width: 5rem;
   }
   .amount-class {
-    top: 35%;
-    height: 40%;
-    width: 100%;
+    top: 40%;
+    height: 30%;
+    width: 50%;
   }
   .form-subtext {
     font-size: 1.1rem;
@@ -1326,14 +1342,13 @@ li {
   }
 }
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 550px) {
   .flex-options {
-    margin-left: 1rem;
+    margin: 0;
   }
-  .fa-cart-plus {
-    left: -2rem;
-    padding: 0.2rem;
-  }
+}
+
+@media only screen and (max-width: 500px) {
   .form-text {
     font-size: 6vw !important;
   }
@@ -1372,6 +1387,38 @@ li {
   }
   .hide-contact-form {
     left: 87%;
+  }
+
+  .fa-cart-plus {
+    top: 72%;
+    left: -9rem;
+  }
+  .form-title {
+    left: 3%;
+  }
+  .flex-options {
+    flex-direction: column-reverse !important;
+    margin-bottom: 5rem;
+    margin-left: 5rem;
+  }
+  .amount-class {
+    left: 1.3rem;
+  }
+  .inc-button {
+    padding: 0.2rem 0.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .dec-button {
+    padding: 0.2rem 0.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .fa-cart-plus {
+    left: 2%;
+    top: 40%;
   }
 }
 
@@ -1445,7 +1492,8 @@ li {
     left: 20%;
   }
   .verzend-gegevens {
-    height: 2.75rem;
+    margin-bottom: 3rem;
+    height: 2.2rem;
   }
 
   .hide-cart2 {
@@ -1454,6 +1502,13 @@ li {
   .error-styling {
     font-size: 0.8rem;
     text-align: center;
+  }
+  .flex-options {
+    margin-left: 0rem;
+    margin-bottom: 4rem;
+  }
+  .form-title {
+    left: 25%;
   }
 }
 
@@ -1473,9 +1528,6 @@ li {
   }
   .burger-button {
     left: -2rem;
-  }
-  .fa-cart-plus {
-    left: -2.5rem;
   }
   .flavor-positioning {
     gap: 0.5rem;
