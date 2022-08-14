@@ -787,6 +787,7 @@ const cartRendering = () => {
 //Show Cart
 shoppingCart.addEventListener("click", () => {
   checkoutCart.style.display = "flex";
+  navBar.style.display = "none";
   cartRendering();
   customerDetails.classList.add("hidden");
   checkoutCart.classList.remove("hidden");
@@ -797,6 +798,7 @@ shoppingCart.addEventListener("click", () => {
 document.onkeydown = function (e) {
   if (e.key === "Escape") {
     checkoutCart.style.display = "none";
+    navBar.style.display = "flex";
   }
 };
 
@@ -821,6 +823,7 @@ hideCart2.addEventListener("click", () => {
   verzendGegevens.classList.remove("hidden");
   finalText1.classList.add("hidden");
   finalText2.classList.add("hidden");
+  navBar.style.display = "flex";
 });
 
 hideCart.addEventListener("click", () => {
@@ -844,6 +847,7 @@ hideCart.addEventListener("click", () => {
   finalText1.classList.add("hidden");
   finalText2.classList.add("hidden");
   totalBox.style.border = "none";
+  navBar.style.display = "flex";
 });
 mainMenu.addEventListener("click", () => {
   customerDetails.classList.add("hidden");
@@ -863,6 +867,7 @@ mainMenu.addEventListener("click", () => {
   couponSubmit.style.color = "black";
   cartContent.discount = false;
   totalBox.style.border = "none";
+  navBar.style.display = "flex";
 });
 
 const shoppingCartFlashing = (itemCount) => {
@@ -879,7 +884,7 @@ increaseQuantity1.addEventListener("click", () => {
   initValue1++;
   amount1.textContent = initValue1;
 });
-decreaseQuantity1.addEventListener("click", () => {
+decreaseQuantity1.addEventListener("mouseup", () => {
   if (initValue1 === 0) return;
   initValue1--;
   amount1.textContent = initValue1;
