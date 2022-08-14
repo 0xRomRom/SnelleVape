@@ -119,6 +119,7 @@ li {
   font-weight: 600;
   padding-left: 1rem;
   padding-right: 1rem;
+  margin-bottom: 10rem;
 }
 
 @keyframes quickFlash {
@@ -1269,6 +1270,7 @@ li {
   .gegevens-div {
     top: -3rem;
     width: 90%;
+    left: 1%;
   }
   .hide-contact-form {
     left: 89%;
