@@ -27,9 +27,9 @@ let newMessageCount = 0;
 let keyArray = [];
 newOrderCounter.textContent = newOrderCount;
 newMessageCounter.textContent = newOrderCount;
-// ordersPanel.classList.add("hidden");
-// messagesPanel.classList.add("hidden");
-// earningsPanel.classList.add("hidden");
+ordersPanel.classList.add("hidden");
+messagesPanel.classList.add("hidden");
+earningsPanel.classList.add("hidden");
 ////////
 
 const orderLoop = (data) => {
