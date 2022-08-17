@@ -271,7 +271,8 @@
   background: url("./img/smoke2.jpg");
   background-repeat: no-repeat;
   background-size: 100% 100%;
-  border: 2px solid rgb(68, 89, 233);
+  /* border: 2px solid rgb(68, 89, 233); */
+  border: 2px solid red;
   border-radius: 0.8rem;
   box-shadow: 0px 0px 10px;
   z-index: 3;
