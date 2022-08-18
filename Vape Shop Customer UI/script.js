@@ -17,37 +17,115 @@ const ordersPanel = document.querySelector(".orders-panel");
 const messagesPanel = document.querySelector(".messages-panel");
 const earningsPanel = document.querySelector(".earnings-panel");
 const ordersBox = document.querySelector(".orders-box");
+const ordersDiv = document.querySelector(".obx-orders");
+const refreshOrders = document.querySelector(".refresh1");
+const arrowsRefresh = document.querySelector(".fa-arrows-rotate");
+const customerBox = document.querySelector(".customer-box");
+
+const custNaam = document.querySelector(".cust-naam");
+const custPlaats = document.querySelector(".cust-plaats");
+const custStraat = document.querySelector(".cust-straat");
+const custPostcode = document.querySelector(".cust-postcode");
+const custMobiel = document.querySelector(".cust-mobiel");
+const custHuisnummer = document.querySelector(".cust-huisnummer");
+const custEmail = document.querySelector(".cust-email");
+const custDiscountTxt = document.querySelector(".cust-discount-txt");
+const ordersBack = document.querySelector(".fa-arrow-right-to-bracket");
 
 //Init//
 home.style.transition = "all 0.1s ease-in-out";
 home.style.marginLeft = "1.2rem";
 faHouse.style.fontSize = "3rem";
-let newOrderCount = 0;
-let newMessageCount = 0;
-let keyArray = [];
-newOrderCounter.textContent = newOrderCount;
-newMessageCounter.textContent = newOrderCount;
-ordersPanel.classList.add("hidden");
+let initialOrderCount = 0;
+let numberClicked = 0;
+let totalOrderLength = 0;
+let clickedIndex = 0;
+const orderKeys = [];
+let fetchedData = {};
+newOrderCounter.textContent = initialOrderCount;
+newMessageCounter.textContent = initialOrderCount;
+// ordersPanel.classList.add("hidden");
 messagesPanel.classList.add("hidden");
 earningsPanel.classList.add("hidden");
 ////////
 
-const orderLoop = (data) => {
-  for (let [key] in Object.entries(data)) {
-    let keyIncrease = +key + 1;
-    const div = document.createElement("div");
-    div.innerText = `${keyIncrease} `;
-    document.getElementById("obx-count").appendChild(div);
-  }
-  let orderLength = Object.values(data).length;
-  for (let i = 0; i < orderLength; i++) {
-    const div = document.createElement("div");
-    const anotherDiv = document.createElement("div");
-    div.innerText = Object.values(data)[i].customerDetails.naam;
-    anotherDiv.innerText = `Qty: ${Object.values(data)[i].totalCount}`;
+ordersBack.addEventListener("click", () => {
+  customerBox.classList.add("hidden");
+  ordersDiv.classList.remove("hidden");
+  ordersBox.classList.remove("hidden");
+  custDiscountTxt.textContent = "";
+});
 
-    document.getElementById("obx-email").appendChild(div);
-    document.getElementById("obx-amount").appendChild(anotherDiv);
+ordersDiv.addEventListener("click", (e) => {
+  orderKeys.map((item, i) => {
+    if (e.target.classList.contains(item)) {
+      clickedIndex = i + 1;
+    }
+  });
+  if (clickedIndex === 0) return;
+  if (clickedIndex > 0) {
+    customerBox.classList.remove("hidden");
+    ordersDiv.classList.add("hidden");
+    ordersBox.classList.add("hidden");
+  }
+  customerRenderLoop();
+  console.log(clickedIndex);
+});
+
+const customerRenderLoop = () => {
+  console.log(Object.values(fetchedData)[0].discount);
+  custNaam.textContent = `Naam: 
+    ${Object.values(fetchedData)[clickedIndex - 1].customerDetails.naam}`;
+  custPlaats.textContent = `Plaats: ${
+    Object.values(fetchedData)[clickedIndex - 1].customerDetails.plaats
+  }`;
+  custPostcode.textContent = `Postcode: ${
+    Object.values(fetchedData)[clickedIndex - 1].customerDetails.postcode
+  }`;
+  custStraat.textContent = `Straat: ${
+    Object.values(fetchedData)[clickedIndex - 1].customerDetails.straat
+  }`;
+  custEmail.textContent = `Email: ${
+    Object.values(fetchedData)[clickedIndex - 1].customerDetails.email
+  }`;
+  custHuisnummer.textContent = `Huisnummer: ${
+    Object.values(fetchedData)[clickedIndex - 1].customerDetails.huisnummer
+  }`;
+  custMobiel.textContent = `Mobiel: ${
+    Object.values(fetchedData)[clickedIndex - 1].customerDetails.mobiel
+  }`;
+  if (Object.values(fetchedData)[clickedIndex - 1].discount) {
+    custDiscountTxt.textContent = `Korting: Ja`;
+  } else {
+    custDiscountTxt.textContent = `Korting: Nee`;
+  }
+};
+
+refreshOrders.addEventListener("click", () => {
+  arrowsRefresh.classList.add("turn");
+  ordersDiv.innerHTML = "";
+  orderFetcher();
+  setTimeout(() => {
+    arrowsRefresh.classList.remove("turn");
+  }, 1500);
+});
+
+const orderLoop = (data) => {
+  const orderLength = Object.values(data).length;
+  totalOrderLength = orderLength;
+  let counter = 1;
+  for (let i = 0; i < orderLength; i++) {
+    ordersDiv.innerHTML += `<div class="box ${
+      "box" + "-" + (i + 1)
+    }"><p class="box-counter ${
+      Object.keys(data)[i]
+    }">${counter}</p> <p class="box-name ${Object.keys(data)[i]}">${
+      Object.values(data)[i].customerDetails.naam
+    }</p> <p class="box-qty ${Object.keys(data)[i]}">${
+      "Qty: " + Object.values(data)[i].totalCount
+    }</p></div>`;
+    counter++;
+    orderKeys.push(Object.keys(data)[i]);
   }
 };
 
@@ -60,6 +138,7 @@ const orderFetcher = async () => {
   }
   const data = await response.json();
   orderLoop(data);
+  fetchedData = data;
 };
 orderFetcher();
 

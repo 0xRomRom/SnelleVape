@@ -271,12 +271,25 @@
   background: url("./img/smoke2.jpg");
   background-repeat: no-repeat;
   background-size: 100% 100%;
-  /* border: 2px solid rgb(68, 89, 233); */
-  border: 2px solid red;
+  border: 2px solid rgb(68, 89, 233);
   border-radius: 0.8rem;
   box-shadow: 0px 0px 10px;
   z-index: 3;
   overflow: hidden;
+}
+
+.turn {
+  animation: turnRound 1s ease-in-out forwards;
+}
+
+@keyframes turnRound {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .orders-title {
@@ -292,17 +305,17 @@
 
 .orders-box {
   position: absolute;
-  height: 60rem;
+  height: 40rem;
   width: 70rem;
   left: 20vw;
-  top: 5rem;
+  top: 10rem;
   background-color: rgb(92, 94, 92);
   border: 2px solid rgb(68, 89, 233);
   border-radius: 0.8rem;
   box-shadow: 0px 0px 10px rgba(68, 89, 233, 1);
   display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
+  justify-content: center;
+  align-items: center;
   flex-direction: row;
   gap: 3rem;
   padding-left: 2rem;
@@ -313,98 +326,126 @@
   overflow-x: hidden;
 }
 
-#obx-count {
-  color: white;
-  font-family: "Archivo Black", sans-serif;
-  font-size: 3rem;
+.obx-orders {
+  position: absolute;
+  /* background-color: red; */
+  top: 0rem;
+  width: 100%;
+  left: -0.2rem;
+}
+
+.box {
+  border: 2px solid rgb(68, 89, 233);
+  box-shadow: 0px 0px 10px rgba(68, 89, 233, 1);
   border-radius: 0.8rem;
+  position: relative;
+  top: 1rem;
+  width: 95%;
+  left: 2.5%;
+  height: 5rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  cursor: pointer;
+}
+
+.box:hover {
+  background-color: rgba(13, 39, 189, 0.221);
+}
+
+.box-counter {
+  position: relative;
+  border-radius: 0.8rem;
+  padding: 0rem 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25%;
+  font-size: 2vw;
+}
+
+.box-name {
+  position: relative;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2vw;
+}
+.box-qty {
+  position: relative;
+  width: 25%;
+  font-size: 2vw;
+  padding-right: 0;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.customer-box {
+  position: absolute;
+  height: 40rem;
+  width: 70rem;
+  left: 20vw;
+  top: 10rem;
+  /* background-color: rgb(92, 94, 92); */
+  background-color: rgb(0, 0, 0);
+  border: 2px solid rgb(68, 89, 233);
+  border-radius: 0.8rem;
+  box-shadow: 0px 0px 10px rgba(68, 89, 233, 1);
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  color: blue;
-  /* border: 1px solid blue; */
-}
-
-#obx-count > div {
+  padding-left: 2rem;
   color: white;
   font-family: "Archivo Black", sans-serif;
-  font-size: 3rem;
-  border-radius: 3rem;
-  gap: 1rem;
-  padding: 0.2rem 1rem;
-  margin: 0.5rem;
-  color: rgb(210, 201, 201);
-  border: 1px solid blue;
-  box-shadow: 0px 0px 5px blue;
+  font-size: 2rem;
+  z-index: 200;
 }
 
-#obx-email {
-  color: white;
-  font-family: "Archivo Black", sans-serif;
-  font-size: 3rem;
+.cust-info-box {
+  position: relative;
+  left: -10rem;
+  top: -5rem;
+  padding: 0.5rem;
+  border: 2px solid rgb(68, 89, 233);
   border-radius: 0.8rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  box-shadow: 0px 0px 10px rgba(68, 89, 233, 1);
+}
+
+.cust-info-title {
   text-align: center;
-  color: blue;
-  /* border: 1px solid blue; */
 }
-
-#obx-email > div {
-  color: white;
-  font-family: "Archivo Black", sans-serif;
-  font-size: 3rem;
-  border-radius: 3rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  gap: 1rem;
-  padding: 0.2rem;
-  margin: 0.5rem;
-  color: rgb(210, 201, 201);
-  border: 1px solid blue;
-  box-shadow: 0px 0px 5px blue;
-  width: 25rem;
-}
-
-#obx-amount {
-  color: white;
-  font-family: "Archivo Black", sans-serif;
-  font-size: 3rem;
+.cust-discount {
+  position: relative;
+  left: 17rem;
+  top: -27.8rem;
+  padding: 0.5rem;
+  border: 2px solid rgb(68, 89, 233);
   border-radius: 0.8rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  text-align: center;
-  color: blue;
-  /* border: 1px solid blue; */
+  box-shadow: 0px 0px 10px rgba(68, 89, 233, 1);
 }
 
-#obx-amount > div {
+.fa-arrow-right-to-bracket {
+  position: relative;
   color: white;
-  font-family: "Archivo Black", sans-serif;
-  font-size: 3rem;
-  border-radius: 3rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  gap: 1rem;
-  padding: 0.2rem 1.4rem;
-  margin: 0.5rem;
-  color: rgb(210, 201, 201);
-  border: 1px solid blue;
-  box-shadow: 0px 0px 5px blue;
-  width: 15rem;
+  font-size: 2rem;
+  left: -33rem;
+  top: -4rem;
+  transform: rotate(180deg);
+  cursor: pointer;
+}
+
+.fa-arrow-right-to-bracket:hover {
+  color: rgb(255, 0, 0);
 }
 
 .fa-arrows-rotate {
-  position: relative;
+  position: absolute;
   left: 90vw;
   top: 3rem;
   font-size: 3rem;
