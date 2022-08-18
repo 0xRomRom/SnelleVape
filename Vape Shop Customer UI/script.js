@@ -30,6 +30,8 @@ const custMobiel = document.querySelector(".cust-mobiel");
 const custHuisnummer = document.querySelector(".cust-huisnummer");
 const custEmail = document.querySelector(".cust-email");
 const custDiscountTxt = document.querySelector(".cust-discount-txt");
+const custTotalTxt = document.querySelector(".cust-total-txt");
+const custPriceTxt = document.querySelector(".cust-prijs-txt");
 const ordersBack = document.querySelector(".fa-arrow-right-to-bracket");
 
 //Init//
@@ -99,6 +101,12 @@ const customerRenderLoop = () => {
   } else {
     custDiscountTxt.textContent = `Korting: Nee`;
   }
+  custTotalTxt.textContent = `Aantal: ${
+    Object.values(fetchedData)[clickedIndex - 1].totalCount
+  }`;
+  custPriceTxt.textContent = `Totaal:€${
+    Object.values(fetchedData)[clickedIndex - 1].totalPrice
+  } `;
 };
 
 refreshOrders.addEventListener("click", () => {
