@@ -452,6 +452,16 @@
   box-shadow: 0px 0px 10px rgba(68, 89, 233, 1);
 }
 
+.cust-freevape {
+  position: absolute;
+  left: 50rem;
+  top: 28.5rem;
+  padding: 0.5rem;
+  border: 2px solid rgb(68, 89, 233);
+  border-radius: 0.8rem;
+  box-shadow: 0px 0px 10px rgba(68, 89, 233, 1);
+}
+
 .fa-arrow-right-to-bracket {
   position: absolute;
   color: white;

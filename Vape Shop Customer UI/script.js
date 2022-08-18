@@ -32,6 +32,8 @@ const custEmail = document.querySelector(".cust-email");
 const custDiscountTxt = document.querySelector(".cust-discount-txt");
 const custTotalTxt = document.querySelector(".cust-total-txt");
 const custPriceTxt = document.querySelector(".cust-prijs-txt");
+const custFreevape1 = document.querySelector(".cust-freevape1");
+const custFreevape2 = document.querySelector(".cust-freevape2");
 const ordersBack = document.querySelector(".fa-arrow-right-to-bracket");
 
 //Init//
@@ -104,9 +106,16 @@ const customerRenderLoop = () => {
   custTotalTxt.textContent = `Aantal: ${
     Object.values(fetchedData)[clickedIndex - 1].totalCount
   }`;
-  custPriceTxt.textContent = `Totaal:€${
-    Object.values(fetchedData)[clickedIndex - 1].totalPrice
-  } `;
+  custPriceTxt.textContent = `Totaal:€${Object.values(fetchedData)[
+    clickedIndex - 1
+  ].totalPrice.toFixed(2)} `;
+  console.log(Object.values(fetchedData)[clickedIndex - 1].freeVape1);
+  if (Object.values(fetchedData)[clickedIndex - 1].totalCount > 4) {
+    custFreevape1.textContent = "";
+    custFreevape1.textContent = `Gratis Vape 1: ${
+      Object.values(fetchedData)[clickedIndex - 1].flavorAmounts.freeVape1
+    }`;
+  }
 };
 
 refreshOrders.addEventListener("click", () => {

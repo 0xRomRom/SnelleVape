@@ -340,6 +340,8 @@ toShipping.addEventListener("click", (e) => {
   cartContent.customerDetails.plaats = plaatsInput.value;
   cartContent.customerDetails.email = emailInput.value;
   cartContent.customerDetails.mobiel = mobielInput.value;
+  cartContent.freeVape1 = freeVapeOption1.value;
+  cartContent.freeVape2 = freeVapeOption2.value;
   shipToFirebase();
   naamInput.value = "";
   straatInput.value = "";
