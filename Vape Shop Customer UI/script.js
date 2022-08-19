@@ -58,6 +58,9 @@ ordersBack.addEventListener("click", () => {
   ordersDiv.classList.remove("hidden");
   ordersBox.classList.remove("hidden");
   custDiscountTxt.textContent = "";
+  custFreevape1.textContent = "";
+  ordersDiv.classList.add("fadeDivIn2");
+  customerBox.classList.add("fadeDivIn");
 });
 
 ordersDiv.addEventListener("click", (e) => {
@@ -77,45 +80,41 @@ ordersDiv.addEventListener("click", (e) => {
 });
 
 const customerRenderLoop = () => {
-  console.log(Object.values(fetchedData)[0].discount);
+  const clickedBox = Object.values(fetchedData)[clickedIndex - 1];
   custNaam.textContent = `Naam: 
-    ${Object.values(fetchedData)[clickedIndex - 1].customerDetails.naam}`;
-  custPlaats.textContent = `Plaats: ${
-    Object.values(fetchedData)[clickedIndex - 1].customerDetails.plaats
-  }`;
-  custPostcode.textContent = `Postcode: ${
-    Object.values(fetchedData)[clickedIndex - 1].customerDetails.postcode
-  }`;
-  custStraat.textContent = `Straat: ${
-    Object.values(fetchedData)[clickedIndex - 1].customerDetails.straat
-  }`;
-  custEmail.textContent = `Email: ${
-    Object.values(fetchedData)[clickedIndex - 1].customerDetails.email
-  }`;
-  custHuisnummer.textContent = `Huisnummer: ${
-    Object.values(fetchedData)[clickedIndex - 1].customerDetails.huisnummer
-  }`;
-  custMobiel.textContent = `Mobiel: ${
-    Object.values(fetchedData)[clickedIndex - 1].customerDetails.mobiel
-  }`;
-  if (Object.values(fetchedData)[clickedIndex - 1].discount) {
+    ${clickedBox.customerDetails.naam}`;
+  custPlaats.textContent = `Plaats: ${clickedBox.customerDetails.plaats}`;
+  custPostcode.textContent = `Postcode: ${clickedBox.customerDetails.postcode}`;
+  custStraat.textContent = `Straat: ${clickedBox.customerDetails.straat}`;
+  custEmail.textContent = `Email: ${clickedBox.customerDetails.email}`;
+  custHuisnummer.textContent = `Huisnummer: ${clickedBox.customerDetails.huisnummer}`;
+  custMobiel.textContent = `Mobiel: ${clickedBox.customerDetails.mobiel}`;
+  if (clickedBox.discount) {
     custDiscountTxt.textContent = `Korting: Ja`;
   } else {
     custDiscountTxt.textContent = `Korting: Nee`;
   }
-  custTotalTxt.textContent = `Aantal: ${
-    Object.values(fetchedData)[clickedIndex - 1].totalCount
-  }`;
-  custPriceTxt.textContent = `Totaal:€${Object.values(fetchedData)[
+  console.log(clickedBox.discount);
+  custTotalTxt.textContent = `Aantal: ${clickedBox.totalCount}`;
+  custPriceTxt.textContent = `Totaal: €${Object.values(fetchedData)[
     clickedIndex - 1
   ].totalPrice.toFixed(2)} `;
-  console.log(Object.values(fetchedData)[clickedIndex - 1].freeVape1);
-  if (Object.values(fetchedData)[clickedIndex - 1].totalCount > 4) {
+  console.log(clickedBox.freeVape1);
+  if (clickedBox.totalCount > 4) {
     custFreevape1.textContent = "";
-    custFreevape1.textContent = `Gratis Vape 1: ${
-      Object.values(fetchedData)[clickedIndex - 1].flavorAmounts.freeVape1
-    }`;
+    custFreevape1.textContent = `Gratis Vape 1: ${clickedBox.freeVape1}`;
+    custFreevape2.textContent = `Gratis Vape 2: Geen`;
   }
+  if (clickedBox.totalCount > 9) {
+    custFreevape1.textContent = "";
+    custFreevape2.textContent = "";
+    custFreevape1.textContent = `Gratis Vape 1: ${clickedBox.freeVape1}`;
+    custFreevape2.textContent = `Gratis Vape 2: ${clickedBox.freeVape2}`;
+  } else {
+    custFreevape1.textContent = `Gratis Vape 1: Geen`;
+    custFreevape2.textContent = `Gratis Vape 2: Geen`;
+  }
+  console.log(Object.values(fetchedData)[clickedIndex - 1]);
 };
 
 refreshOrders.addEventListener("click", () => {

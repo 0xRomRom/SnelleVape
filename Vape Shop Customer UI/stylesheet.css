@@ -262,6 +262,20 @@
   }
 }
 
+.fadeDivIn2 {
+  animation: fadeIn2 1s forwards;
+}
+
+@keyframes fadeIn2 {
+  from {
+    transform: scale(0);
+  }
+
+  to {
+    transform: scale(1);
+  }
+}
+
 .orders-panel {
   position: absolute;
   width: 98vw;
@@ -309,7 +323,7 @@
   width: 70rem;
   left: 20vw;
   top: 10rem;
-  background-color: rgb(92, 94, 92);
+  background-color: rgb(0, 0, 0);
   border: 2px solid rgb(68, 89, 233);
   border-radius: 0.8rem;
   box-shadow: 0px 0px 10px rgba(68, 89, 233, 1);
@@ -329,7 +343,7 @@
 .obx-orders {
   position: absolute;
   background-color: black;
-  top: 0rem;
+  top: -1rem;
   width: 100%;
   left: -0.2rem;
 }
@@ -403,7 +417,7 @@
   padding-left: 2rem;
   color: white;
   font-family: "Archivo Black", sans-serif;
-  font-size: 2rem;
+  font-size: 1.5vw;
   z-index: 200;
 }
 
@@ -411,55 +425,79 @@
   position: absolute;
   left: 7rem;
   top: 4.5rem;
-  padding: 0.5rem;
+  padding-left: 1rem;
   border: 2px solid rgb(68, 89, 233);
   border-radius: 0.8rem;
   box-shadow: 0px 0px 10px rgba(68, 89, 233, 1);
-  width: 40rem;
+  width: 35rem;
+  min-height: 20rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  font-size: 1.5rem;
+}
+
+.cust-info-box2 {
+  position: absolute;
+  left: 45rem;
+  top: 4.5rem;
+  padding-left: 1rem;
+  border-radius: 0.8rem;
+  /* border: 2px solid rgb(68, 89, 233);
+  box-shadow: 0px 0px 10px rgba(68, 89, 233, 1); */
+  width: 22rem;
+  min-height: 20rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  font-size: 1.1rem;
 }
 
 .cust-info-title {
-  text-align: center;
+  position: relative;
+  padding: 0rem 0rem 1rem 10rem;
 }
 
 .cust-discount {
-  position: absolute;
-  left: 50rem;
-  top: 14.5rem;
-  padding: 0.5rem;
+  padding: 0.1rem;
   border: 2px solid rgb(68, 89, 233);
-  border-radius: 0.8rem;
+  border-radius: 0.6rem;
   box-shadow: 0px 0px 10px rgba(68, 89, 233, 1);
+  min-width: 20rem;
+  text-align: center;
+  font-size: 1.2rem;
 }
 
 .cust-total {
-  position: absolute;
-  left: 50rem;
-  top: 9.5rem;
-  padding: 0.5rem;
+  padding: 0.1rem;
   border: 2px solid rgb(68, 89, 233);
-  border-radius: 0.8rem;
+  border-radius: 0.6rem;
   box-shadow: 0px 0px 10px rgba(68, 89, 233, 1);
+  min-width: 20rem;
+  text-align: center;
+  font-size: 1.2rem;
 }
 
 .cust-prijs {
-  position: absolute;
-  left: 50rem;
-  top: 4.5rem;
-  padding: 0.5rem;
+  padding: 0.1rem;
   border: 2px solid rgb(68, 89, 233);
-  border-radius: 0.8rem;
+  border-radius: 0.6rem;
   box-shadow: 0px 0px 10px rgba(68, 89, 233, 1);
+  min-width: 20rem;
+  text-align: center;
+  font-size: 1.2rem;
 }
 
 .cust-freevape {
-  position: absolute;
-  left: 50rem;
-  top: 28.5rem;
-  padding: 0.5rem;
+  padding: 0.2rem;
   border: 2px solid rgb(68, 89, 233);
-  border-radius: 0.8rem;
+  border-radius: 0.6rem;
   box-shadow: 0px 0px 10px rgba(68, 89, 233, 1);
+  width: 20rem;
+  font-size: 1.2rem;
+  text-align: center;
 }
 
 .fa-arrow-right-to-bracket {
