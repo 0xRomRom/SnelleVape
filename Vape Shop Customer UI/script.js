@@ -21,6 +21,7 @@ const ordersDiv = document.querySelector(".obx-orders");
 const refreshOrders = document.querySelector(".refresh1");
 const arrowsRefresh = document.querySelector(".fa-arrows-rotate");
 const customerBox = document.querySelector(".customer-box");
+const newOrdersButton = document.querySelector(".new-orders");
 
 const custNaam = document.querySelector(".cust-naam");
 const custPlaats = document.querySelector(".cust-plaats");
@@ -248,6 +249,26 @@ stats.addEventListener("click", () => {
   homePanel.classList.add("hidden");
   ordersPanel.classList.remove("hidden");
   ordersPanel.classList.add("fadeDivIn");
+  newOrderCounter.textContent = 0;
+});
+
+newOrdersButton.addEventListener("click", () => {
+  menuBoxHandler(
+    stats,
+    faChartColumn,
+    home,
+    message,
+    earnings,
+    faHouse,
+    faEnvelope,
+    faSackDollar
+  );
+  earningsPanel.classList.add("hidden");
+  messagesPanel.classList.add("hidden");
+  homePanel.classList.add("hidden");
+  ordersPanel.classList.remove("hidden");
+  ordersPanel.classList.add("fadeDivIn");
+  newOrderCounter.textContent = 0;
 });
 
 message.addEventListener("click", () => {
@@ -266,6 +287,7 @@ message.addEventListener("click", () => {
   homePanel.classList.add("hidden");
   messagesPanel.classList.remove("hidden");
   messagesPanel.classList.add("fadeDivIn");
+  newOrderCounter.textContent = 0;
 });
 
 earnings.addEventListener("click", () => {
@@ -284,4 +306,5 @@ earnings.addEventListener("click", () => {
   messagesPanel.classList.add("hidden");
   earningsPanel.classList.remove("hidden");
   earningsPanel.classList.add("fadeDivIn");
+  newOrderCounter.textContent = 0;
 });
