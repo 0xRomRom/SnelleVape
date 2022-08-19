@@ -44,16 +44,23 @@ home.style.marginLeft = "1.2rem";
 faHouse.style.fontSize = "3rem";
 let initialOrderCount = 0;
 let numberClicked = 0;
-let totalOrderLength = 0;
 let clickedIndex = 0;
 const orderKeys = [];
 let fetchedData = {};
 newOrderCounter.textContent = initialOrderCount;
 newMessageCounter.textContent = initialOrderCount;
-// ordersPanel.classList.add("hidden");
+ordersPanel.classList.add("hidden");
 messagesPanel.classList.add("hidden");
 earningsPanel.classList.add("hidden");
 ////////
+
+const localLength1 = localStorage.getItem("newOrder");
+const localLength2 = localStorage.getItem("newOrder2");
+
+if (localLength2 < localLength1) {
+  newOrderCounter.textContent = +(localLength1 - localLength2);
+}
+localStorage.setItem("newOrder2", localLength1);
 
 ordersBack.addEventListener("click", () => {
   customerBox.classList.add("hidden");
@@ -61,8 +68,12 @@ ordersBack.addEventListener("click", () => {
   ordersBox.classList.remove("hidden");
   custDiscountTxt.textContent = "";
   custFreevape1.textContent = "";
+  custFreevape1.textContent = "";
   custSelection.innerHTML = "";
+  custTotalTxt.textContent = "";
+  custPriceTxt.textContent = "";
   custDiscountTxt.textContent = "";
+  custSelection.innerHTML = "";
   ordersDiv.classList.add("fadeDivIn2");
   customerBox.classList.add("fadeDivIn");
 });
@@ -110,19 +121,22 @@ const customerRenderLoop = () => {
   if (clickedBox.totalCount > 9) {
     custFreevape1.textContent = "";
     custFreevape2.textContent = "";
-    custFreevape1.textContent = `Gratis Vape 1: ${clickedBox.freeVape1}`;
-    custFreevape2.textContent = `Gratis Vape 2: ${clickedBox.freeVape2}`;
+    custFreevape1.textContent = `Gratis Vape 1: ${
+      clickedBox.freeVape1.charAt(0).toUpperCase() +
+      clickedBox.freeVape1.slice(1)
+    }`;
+    custFreevape2.textContent = `Gratis Vape 2: ${
+      clickedBox.freeVape2.charAt(0).toUpperCase() +
+      clickedBox.freeVape2.slice(1)
+    }`;
   }
   if (clickedBox.totalCount < 5) {
     custFreevape1.textContent = `Gratis Vape 1: Geen`;
     custFreevape2.textContent = `Gratis Vape 2: Geen`;
   }
-  // console.log(Object.values(fetchedData)[clickedIndex - 1].flavorAmounts);
 
   let customerPicks =
     Object.values(fetchedData)[clickedIndex - 1].flavorAmounts;
-  // custSelect.textContent =
-  //   Object.values(fetchedData)[clickedIndex - 1].flavorAmounts.bubblegumIce;
   console.log(customerPicks);
   for (const data of Object.entries(customerPicks)) {
     console.log(data.toString());
@@ -143,7 +157,10 @@ refreshOrders.addEventListener("click", () => {
 
 const orderLoop = (data) => {
   const orderLength = Object.values(data).length;
-  totalOrderLength = orderLength;
+  localStorage.setItem("newOrder", orderLength);
+
+  customerBox.classList.add("hidden");
+
   let counter = 1;
   for (let i = 0; i < orderLength; i++) {
     ordersDiv.innerHTML += `<div class="box ${
@@ -159,7 +176,6 @@ const orderLoop = (data) => {
     orderKeys.push(Object.keys(data)[i]);
   }
 };
-
 const orderFetcher = async () => {
   const response = await fetch(
     "https://snelle-vape-default-rtdb.europe-west1.firebasedatabase.app/Bestellingen.json"

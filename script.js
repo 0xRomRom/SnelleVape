@@ -487,13 +487,13 @@ document.addEventListener("keyup", () => {
     huisnummerLabel.style.color = "green";
   }
 
-  if (huisnummerInput.value.length > 20) {
+  if (huisnummerInput.value.length > 5) {
     huisnummerError.classList.remove("hidden");
     huisnummerLabel.style.color = "black";
     huisnummerInput.style.border = "2px solid black";
     return;
   }
-  if (huisnummerInput.value.length <= 20) {
+  if (huisnummerInput.value.length <= 5) {
     huisnummerError.classList.add("hidden");
     huisnummerInput.style.border = "2px solid green";
     huisnummerLabel.style.color = "green";

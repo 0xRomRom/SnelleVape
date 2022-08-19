@@ -336,7 +336,7 @@
   color: white;
   font-family: "Archivo Black", sans-serif;
   font-size: 3rem;
-  overflow: scroll;
+  overflow: auto;
   overflow-x: hidden;
 }
 
@@ -387,12 +387,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 2vw;
+  font-size: 1.7vw;
 }
 .box-qty {
   position: relative;
   width: 25%;
-  font-size: 2vw;
+  font-size: 1.7vw;
   padding-right: 0;
   display: flex;
   justify-content: flex-start;
@@ -425,7 +425,7 @@
   position: absolute;
   left: 7rem;
   top: 4.5rem;
-  padding-left: 10rem;
+  padding-left: 2rem;
   border: 2px solid rgb(68, 89, 233);
   border-radius: 0.8rem;
   box-shadow: 0px 0px 10px rgba(68, 89, 233, 1);
