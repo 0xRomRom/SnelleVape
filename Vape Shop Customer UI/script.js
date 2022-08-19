@@ -94,14 +94,13 @@ const customerRenderLoop = () => {
   } else {
     custDiscountTxt.textContent = `Korting: Nee`;
   }
-  console.log(clickedBox.discount);
   custTotalTxt.textContent = `Aantal: ${clickedBox.totalCount}`;
   custPriceTxt.textContent = `Totaal: €${Object.values(fetchedData)[
     clickedIndex - 1
   ].totalPrice.toFixed(2)} `;
-  console.log(clickedBox.freeVape1);
   if (clickedBox.totalCount > 4) {
     custFreevape1.textContent = "";
+    custFreevape2.textContent = "";
     custFreevape1.textContent = `Gratis Vape 1: ${clickedBox.freeVape1}`;
     custFreevape2.textContent = `Gratis Vape 2: Geen`;
   }
@@ -110,11 +109,16 @@ const customerRenderLoop = () => {
     custFreevape2.textContent = "";
     custFreevape1.textContent = `Gratis Vape 1: ${clickedBox.freeVape1}`;
     custFreevape2.textContent = `Gratis Vape 2: ${clickedBox.freeVape2}`;
-  } else {
+  }
+  if (clickedBox.totalCount < 5) {
     custFreevape1.textContent = `Gratis Vape 1: Geen`;
     custFreevape2.textContent = `Gratis Vape 2: Geen`;
   }
   console.log(Object.values(fetchedData)[clickedIndex - 1]);
+
+  for (const [key, value] of Object.entries(fetchedData)) {
+    console.log(key + value);
+  }
 };
 
 refreshOrders.addEventListener("click", () => {
