@@ -358,6 +358,7 @@ toShipping.addEventListener("click", (e) => {
   plaatsInput.value = "";
   emailInput.value = "";
   mobielInput.value = "06-";
+  couponInput.value = "";
 
   allInputs.classList.add("hidden");
   verzendGegevens.classList.add("hidden");
@@ -432,6 +433,17 @@ document.addEventListener("keyup", () => {
     naamInput.style.border = "2px solid green";
     naamLabel.style.color = "green";
   }
+  if (naamInput.value.length > 20) {
+    naamError.classList.remove("hidden");
+    naamLabel.style.color = "black";
+    naamInput.style.border = "2px solid black";
+    return;
+  }
+  if (naamInput.value.length <= 20) {
+    naamError.classList.add("hidden");
+    naamInput.style.border = "2px solid green";
+    naamLabel.style.color = "green";
+  }
 
   if (straatInput.value.length < 4) {
     straatError.classList.remove("hidden");
@@ -448,6 +460,18 @@ document.addEventListener("keyup", () => {
     straatLabel.style.color = "green";
   }
 
+  if (straatInput.value.length > 20) {
+    straatError.classList.remove("hidden");
+    straatLabel.style.color = "black";
+    straatInput.style.border = "2px solid black";
+    return;
+  }
+  if (straatInput.value.length <= 20) {
+    straatError.classList.add("hidden");
+    straatInput.style.border = "2px solid green";
+    straatLabel.style.color = "green";
+  }
+
   if (huisnummerInput.value.length < 1) {
     huisnummerError.classList.remove("hidden");
     toShipping.innerHTML = `Gegevens Correct <i class="fa-solid fa-square-xmark"></i>`;
@@ -458,6 +482,18 @@ document.addEventListener("keyup", () => {
   }
 
   if (huisnummerInput.value.length >= 1) {
+    huisnummerError.classList.add("hidden");
+    huisnummerInput.style.border = "2px solid green";
+    huisnummerLabel.style.color = "green";
+  }
+
+  if (huisnummerInput.value.length > 20) {
+    huisnummerError.classList.remove("hidden");
+    huisnummerLabel.style.color = "black";
+    huisnummerInput.style.border = "2px solid black";
+    return;
+  }
+  if (huisnummerInput.value.length <= 20) {
     huisnummerError.classList.add("hidden");
     huisnummerInput.style.border = "2px solid green";
     huisnummerLabel.style.color = "green";
@@ -484,6 +520,18 @@ document.addEventListener("keyup", () => {
     toShipping.disabled = true;
     return;
   }
+  if (postcodeInput.value.length > 20) {
+    postcodeError.classList.remove("hidden");
+    postcodeLabel.style.color = "black";
+    postcodeInput.style.border = "2px solid black";
+    return;
+  }
+  if (postcodeInput.value.length <= 20) {
+    postcodeError.classList.add("hidden");
+    postcodeInput.style.border = "2px solid green";
+    postcodeLabel.style.color = "green";
+  }
+
   if (plaatsInput.value.length < 3) {
     plaatsError.classList.remove("hidden");
     toShipping.innerHTML = `Gegevens Correct <i class="fa-solid fa-square-xmark"></i>`;
@@ -494,6 +542,18 @@ document.addEventListener("keyup", () => {
   }
 
   if (plaatsInput.value.length >= 3) {
+    plaatsError.classList.add("hidden");
+    plaatsInput.style.border = "2px solid green";
+    plaatsLabel.style.color = "green";
+  }
+
+  if (plaatsInput.value.length > 20) {
+    plaatsError.classList.remove("hidden");
+    plaatsLabel.style.color = "black";
+    plaatsInput.style.border = "2px solid black";
+    return;
+  }
+  if (plaatsInput.value.length <= 20) {
     plaatsError.classList.add("hidden");
     plaatsInput.style.border = "2px solid green";
     plaatsLabel.style.color = "green";
@@ -522,6 +582,18 @@ document.addEventListener("keyup", () => {
     emailLabel.style.color = "green";
   }
 
+  if (emailInput.value.length > 30) {
+    emailError.classList.remove("hidden");
+    emailLabel.style.color = "black";
+    emailInput.style.border = "2px solid black";
+    return;
+  }
+  if (emailInput.value.length <= 30) {
+    emailError.classList.add("hidden");
+    emailInput.style.border = "2px solid green";
+    emailLabel.style.color = "green";
+  }
+
   if (mobielInput.value.length < 10) {
     mobielError.classList.remove("hidden");
     toShipping.innerHTML = `Gegevens Correct <i class="fa-solid fa-square-xmark"></i>`;
@@ -534,9 +606,22 @@ document.addEventListener("keyup", () => {
     mobielError.classList.add("hidden");
     mobielInput.style.border = "2px solid green";
     mobielLabel.style.color = "green";
+
+    toShipping.style.cursor = "pointer";
+  }
+
+  if (mobielInput.value.length > 20) {
+    mobielError.classList.remove("hidden");
+    mobielLabel.style.color = "black";
+    mobielInput.style.border = "2px solid black";
+    return;
+  }
+  if (mobielInput.value.length <= 20) {
+    mobielError.classList.add("hidden");
+    mobielInput.style.border = "2px solid green";
+    mobielLabel.style.color = "green";
     toShipping.disabled = false;
     toShipping.innerHTML = `Gegevens Correct <i class="fa-solid fa-check-double"></i>`;
-    toShipping.style.cursor = "pointer";
   }
 });
 

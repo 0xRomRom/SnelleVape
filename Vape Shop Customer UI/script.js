@@ -35,6 +35,8 @@ const custPriceTxt = document.querySelector(".cust-prijs-txt");
 const custFreevape1 = document.querySelector(".cust-freevape1");
 const custFreevape2 = document.querySelector(".cust-freevape2");
 const ordersBack = document.querySelector(".fa-arrow-right-to-bracket");
+const custSelect = document.querySelector(".cust-select");
+const custSelection = document.querySelector(".cust-selection");
 
 //Init//
 home.style.transition = "all 0.1s ease-in-out";
@@ -59,6 +61,8 @@ ordersBack.addEventListener("click", () => {
   ordersBox.classList.remove("hidden");
   custDiscountTxt.textContent = "";
   custFreevape1.textContent = "";
+  custSelection.innerHTML = "";
+  custDiscountTxt.textContent = "";
   ordersDiv.classList.add("fadeDivIn2");
   customerBox.classList.add("fadeDivIn");
 });
@@ -76,7 +80,6 @@ ordersDiv.addEventListener("click", (e) => {
     ordersBox.classList.add("hidden");
   }
   customerRenderLoop();
-  console.log(clickedIndex);
 });
 
 const customerRenderLoop = () => {
@@ -114,10 +117,18 @@ const customerRenderLoop = () => {
     custFreevape1.textContent = `Gratis Vape 1: Geen`;
     custFreevape2.textContent = `Gratis Vape 2: Geen`;
   }
-  console.log(Object.values(fetchedData)[clickedIndex - 1]);
+  // console.log(Object.values(fetchedData)[clickedIndex - 1].flavorAmounts);
 
-  for (const [key, value] of Object.entries(fetchedData)) {
-    console.log(key + value);
+  let customerPicks =
+    Object.values(fetchedData)[clickedIndex - 1].flavorAmounts;
+  // custSelect.textContent =
+  //   Object.values(fetchedData)[clickedIndex - 1].flavorAmounts.bubblegumIce;
+  console.log(customerPicks);
+  for (const data of Object.entries(customerPicks)) {
+    console.log(data.toString());
+    const str = data.toString().replace(",", ": ");
+    const str2 = str.charAt(0).toUpperCase() + str.slice(1);
+    custSelection.innerHTML += `<p class='cust-selected'>${str2}</p>`;
   }
 };
 
