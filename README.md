@@ -1,2 +1,5 @@
-## Practice Webshop 'Snelle Vape'
-## Under construction => https://snellevape.netlify.app/
+# Mock E-Comm Store
+## Store: https://snellevape.netlify.app
+## Admin Dash: https://vape-admin-dash.netlify.app/
+
+
