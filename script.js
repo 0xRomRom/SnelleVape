@@ -281,6 +281,7 @@ submitContactForm.addEventListener("click", (e) => {
   e.preventDefault();
   if (textAreaContactForm.value.length < 3) return;
   if (emailFormInput.value.length < 3) return;
+  if (emailFormInput.value.length >= 35) return;
   contactForm.bericht = textAreaContactForm.value;
   contactForm.email = emailFormInput.value;
   fetch(

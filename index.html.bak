@@ -556,7 +556,7 @@
       <div class="contact-page hidden">
         <button class="hide-contact-form">X</button>
         <img src="./img/Contact.png" class="contact2" />
-        <p class="contact-text">Vragen? Opmerking? Stel ze hier onder en wij proberen zo spoedig mogelijk contact met u op te nemen.</p>
+        <p class="contact-text">Vragen? Opmerking? Eigen webshop beginnen? Stel je vragen hier onder en wij proberen zo spoedig mogelijk contact met u op te nemen.</p>
         <div class="form-box2">
           <textarea rows="4" cols="50" class="contact-textarea" maxlength="414"></textarea>
         </div>
